@@ -1,0 +1,19 @@
+﻿@page
+
+<h3>
+	Home
+</h3>
+
+<hr />
+
+@for (int index = 100; index <= 5000; index += 100)
+{
+	string fileIndex =
+		index.ToString()
+		.PadLeft(totalWidth: 5, paddingChar: '0');
+
+	<br />
+	<a href="~/Learn@(fileIndex)">Learn (@(index))</a>
+}
+
+<hr />
