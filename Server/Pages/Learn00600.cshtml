@@ -244,6 +244,69 @@
 
 	<div class="container">
 		<h3>
+			&mdash; Text Transform
+		</h3>
+
+		<p>
+			hElLo, wOrLd!
+		</p>
+		<p class="text-lowercase">
+			hElLo, wOrLd!
+		</p>
+		<p class="text-uppercase">
+			hElLo, wOrLd!
+		</p>
+		<p class="text-capitalize">
+			hElLo, wOrLd! در این حالت، کار نمی‌کند
+		</p>
+		<p class="text-capitalize">
+			hello, world! در این حالت، کار می‌کند
+		</p>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h3>
+			&mdash; Text Wrapping / Breaking
+		</h3>
+
+		<p>
+			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+		</p>
+		<p class="text-wrap">
+			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+		</p>
+		<p class="text-nowrap">
+			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
+		</p>
+		<p>
+			HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+		</p>
+		<p class="text-break">
+			HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+		</p>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h3>
 			&mdash; Line Height
 		</h3>
 
@@ -318,7 +381,7 @@
 
 	<div class="container">
 		<h3>
-			&mdash; Text Alignment with Breakpoints
+			&mdash; Text Horizontal Alignment with Breakpoints
 		</h3>
 
 		<p>
@@ -342,6 +405,54 @@
 		<p class="text-start text-md-center text-xxl-end">
 			Hello, World! (p) [text-start text-md-center text-xxl-end]
 		</p>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h3>
+			&mdash; Text Vertical Alignment
+		</h3>
+
+		<div class="bg-light border" style="line-height: 100px;">
+			<span>[Default]</span>
+			<span class="align-baseline">[align-baseline]</span>
+			<span class="align-top">[align-top]</span>
+			<span class="align-middle">[align-middle]</span>
+			<span class="align-bottom">[align-bottom]</span>
+			<span class="align-text-top">[align-text-top]</span>
+			<span class="align-text-bottom">[align-text-bottom]</span>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h3>
+			&mdash; Misc (Miscellaneous)
+		</h3>
+
+		<div class="font-monospace">
+			for(int index = 1; index <= 10; index++)
+			{
+				System.Console.WriteLine("Hello, World!");
+			}
+		</div>
+
+		<code>
+			for(int index = 1; index <= 10; index++)
+			{
+				System.Console.WriteLine("Hello, World!");
+			}
+		</code>
+
+		<div class="text-danger">
+			Hello, World! <a href="#">This is Link!</a> Hello, World!
+		</div>
+
+		<div class="text-danger">
+			Hello, World! <a href="#" class="text-reset">This is Link!</a> Hello, World!
+		</div>
 	</div>
 
 	<hr />
