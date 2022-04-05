@@ -1,0 +1,190 @@
+﻿@page
+
+<!doctype html>
+
+<html lang="en-US" dir="ltr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Learn</title>
+
+	<link rel="icon" href="/favicon.ico" />
+
+	<style>
+		div.lightgray {
+			width: 200px;
+			height: 200px;
+			background-color: lightgray;
+		}
+
+		div.parent {
+			width: 400px;
+			height: 400px;
+			background-color: yellow;
+			/* حواستان به این قسمت باشد */
+			position: relative;
+		}
+
+		div.red {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+
+		div.green {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+
+		/* مثال اول */
+		/*
+		div.green {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+		*/
+
+		/* مثال دوم */
+		/*
+		div.green {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+		*/
+
+		/* مثال سوم */
+		/*
+		div.green {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		*/
+
+		/* مثال چهارم */
+		/*
+		div.green {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: absolute;
+			left: -20px;
+			bottom: -20px;
+		}
+		*/
+
+		div.blue {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>
+		Absolute
+	</h1>
+
+	<hr />
+
+	<h5>
+		Note: Parent's position should be relative
+	</h5>
+
+	<h5>
+		Note: Nearest containing element with a position
+	</h5>
+
+	<h5>
+		Note: In absolute document flow, elements ARE removed from document flow!
+	</h5>
+
+	<hr />
+
+	<div class="lightgray">
+	</div>
+
+	<div class="parent">
+		<div class="red">
+		</div>
+
+		<div class="green">
+		</div>
+
+		<div class="blue">
+		</div>
+	</div>
+
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+	<p>Hello, World!</p>
+</body>
+</html>
