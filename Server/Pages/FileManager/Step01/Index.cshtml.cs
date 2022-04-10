@@ -31,7 +31,7 @@ namespace Server.Pages.FileManager.Step01
 
 		public string PhysicalRootPath { get; }
 
-		public string? DisplayDateTimeFormat { get; }
+		public string DisplayDateTimeFormat { get; }
 
 		public Microsoft.Extensions.Hosting.IHostEnvironment HostEnvironment { get; }
 		#endregion /Public Read Only Property(ies)
