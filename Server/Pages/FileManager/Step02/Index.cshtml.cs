@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Server.Pages.FileManager.Step01
+namespace Server.Pages.FileManager.Step02
 {
 	public class IndexModel : Infrastructure.BasePageModel
 	{
@@ -14,7 +14,7 @@ namespace Server.Pages.FileManager.Step01
 				"yyyy/MM/dd [HH:mm:ss]";
 
 			PageAddress =
-				"/FileManager/Step01/Index";
+				"/FileManager/Step02/Index";
 
 			PhysicalRootPath =
 				$"{HostEnvironment.ContentRootPath}wwwroot"

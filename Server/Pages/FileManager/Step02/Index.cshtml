@@ -1,0 +1,19 @@
+﻿@page
+@model Server.Pages.FileManager.Step02.IndexModel
+
+@{
+	if (Model == null)
+	{
+		return;
+	}
+
+	Layout = "Layouts/_LayoutFileManager";
+}
+
+<h5>
+	Current Path: @(Model.CurrentPath)
+</h5>
+
+<partial name="PartialViews/_DisplayDirectoryList" model="Model" />
+
+<partial name="PartialViews/_DisplayFileList" model="Model" />
