@@ -14,39 +14,56 @@
 
 	<style>
 		div.row {
-			border: 1px solid grey;
+			border: 1px solid black;
 			background-color: rgb(211,211,211, 0.3);
 		}
 
 			div.row > div[class^="col"] {
-				border: 1px solid grey;
+				border: 1px solid red;
 				background-color: rgb(211,211,211, 0.3);
 			}
 	</style>
 </head>
 
 <body>
-
-	<div class="container">
-		<h3>
-			Row columns
-		</h3>
+	<div class="container shadow-lg py-2 my-3">
+		<h1>
+			&raquo; Learning New Grid (8) - Refer To Learn 00500
+		</h1>
 	</div>
 
 	<div class="container">
 		<h5>
-			Grid ()
+			Grid (1)
 		</h5>
 
-		<div class="row row-cols-auto">
+		<div class="row">
 			<div class="col">
-				Hello
+				Col_1_1
 			</div>
 			<div class="col">
-				How are you?
+				Col_1_2
 			</div>
 			<div class="col">
-				My name is Dariush Tasdighi
+				Col_1_3
+			</div>
+			<div class="col">
+				Col_1_4
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				Col_2_1
+			</div>
+			<div class="col">
+				Col_2_2
+			</div>
+			<div class="col">
+				Col_2_3
+			</div>
+			<div class="col">
+				Col_2_4
 			</div>
 		</div>
 	</div>
@@ -54,55 +71,39 @@
 	<hr />
 
 	<div class="container">
-		<h3>
-			Variable Width Content
-		</h3>
-	</div>
-
-	<div class="container">
 		<h5>
-			Grid (38)
+			Grid (2)
 		</h5>
 
 		<div class="row">
 			<div class="col">
-				Col_1
-			</div>
-			<div class="col-auto">
-				Hello, World!
+				Col_1_1
 			</div>
 			<div class="col">
-				Col_3
-			</div>
-		</div>
-
-		<br />
-
-		<div class="row justify-content-center">
-			<div class="col">
-				Col_1
-			</div>
-			<div class="col-auto">
-				Hello, World!
+				Col_1_2
 			</div>
 			<div class="col">
-				Col_3
+				Col_1_3
 			</div>
-		</div>
+			<div class="col">
+				Col_1_4
+			</div>
 
-		<br />
-
-		<div class="row justify-content-center">
-			<div class="col col-lg-2">
-				Col_1
+			<div class="col">
+				Col_2_1 (NOT WORK)
 			</div>
-			<div class="col-auto">
-				Hello, World!
+			<div class="col">
+				Col_2_2 (NOT WORK)
 			</div>
-			<div class="col col-lg-2">
-				Col_3
+			<div class="col">
+				Col_2_3 (NOT WORK)
+			</div>
+			<div class="col">
+				Col_2_4 (NOT WORK)
 			</div>
 		</div>
 	</div>
+
+	<hr />
 </body>
 </html>

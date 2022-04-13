@@ -14,95 +14,69 @@
 
 	<style>
 		div.row {
-			border: 1px solid grey;
+			border: 1px solid black;
 			background-color: rgb(211,211,211, 0.3);
 		}
 
 			div.row > div[class^="col"] {
-				border: 1px solid grey;
+				border: 1px solid red;
 				background-color: rgb(211,211,211, 0.3);
 			}
 	</style>
 </head>
 
 <body>
-
-	<div class="container">
-		<h3>
-			Row columns
-		</h3>
+	<div class="container shadow-lg py-2 my-3">
+		<h1>
+			&raquo; Learning New Grid (13) - Mix of Row-Cols-[1..6]
+		</h1>
 	</div>
 
 	<div class="container">
 		<h5>
-			Grid ()
+			Grid (1) (row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6)
 		</h5>
 
-		<div class="row row-cols-auto">
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
 			<div class="col">
-				Hello
+				Col_1
 			</div>
 			<div class="col">
-				How are you?
+				Col_2
 			</div>
 			<div class="col">
-				My name is Dariush Tasdighi
+				Col_3
+			</div>
+			<div class="col">
+				Col_4
+			</div>
+			<div class="col">
+				Col_5
+			</div>
+			<div class="col">
+				Col_6
+			</div>
+			<div class="col">
+				Col_7
+			</div>
+			<div class="col">
+				Col_8
+			</div>
+			<div class="col">
+				Col_9
+			</div>
+			<div class="col">
+				Col_10
+			</div>
+			<div class="col">
+				Col_11
+			</div>
+			<div class="col">
+				Col_12
 			</div>
 		</div>
 	</div>
 
 	<hr />
-
-	<div class="container">
-		<h3>
-			Variable Width Content
-		</h3>
-	</div>
-
-	<div class="container">
-		<h5>
-			Grid (38)
-		</h5>
-
-		<div class="row">
-			<div class="col">
-				Col_1
-			</div>
-			<div class="col-auto">
-				Hello, World!
-			</div>
-			<div class="col">
-				Col_3
-			</div>
-		</div>
-
-		<br />
-
-		<div class="row justify-content-center">
-			<div class="col">
-				Col_1
-			</div>
-			<div class="col-auto">
-				Hello, World!
-			</div>
-			<div class="col">
-				Col_3
-			</div>
-		</div>
-
-		<br />
-
-		<div class="row justify-content-center">
-			<div class="col col-lg-2">
-				Col_1
-			</div>
-			<div class="col-auto">
-				Hello, World!
-			</div>
-			<div class="col col-lg-2">
-				Col_3
-			</div>
-		</div>
-	</div>
 </body>
 </html>

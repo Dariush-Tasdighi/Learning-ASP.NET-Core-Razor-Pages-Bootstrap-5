@@ -1,0 +1,180 @@
+﻿@page
+
+<!doctype html>
+
+<html lang="en-US" dir="ltr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Learn</title>
+
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+
+	<style>
+		div.row {
+			border: 1px solid black;
+			background-color: rgb(211,211,211, 0.3);
+		}
+
+			div.row > div[class^="col"] {
+				border: 1px solid red;
+				background-color: rgb(211,211,211, 0.3);
+			}
+	</style>
+</head>
+
+<body>
+	<div class="container shadow-lg py-2 my-3">
+		<h1>
+			&raquo; Learning New Grid (16) - Justify-Content
+		</h1>
+	</div>
+
+	<div class="container shadow-lg py-2 my-3">
+		<h3 dir="rtl">
+			نکته مهم:
+			برای
+			col
+			بی‌معنی است!
+		</h3>
+	</div>
+
+	<div class="container">
+		<h5>
+			Grid (1)
+		</h5>
+
+		<div class="row">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h5>
+			Grid (2) (justify-content-start)
+		</h5>
+
+		<div class="row justify-content-start">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h5>
+			Grid (3) (justify-content-center)
+		</h5>
+
+		<div class="row justify-content-center">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h5>
+			Grid (4) (justify-content-end)
+		</h5>
+
+		<div class="row justify-content-end">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h5>
+			Grid (5) (justify-content-between)
+		</h5>
+
+		<div class="row justify-content-between">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h5>
+			Grid (6) (justify-content-around)
+		</h5>
+
+		<div class="row justify-content-around">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h5>
+			Grid (7) (justify-content-evenly)
+		</h5>
+
+		<div class="row justify-content-evenly">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h5>
+			Grid (8) - Mix
+		</h5>
+
+		<div class="row justify-content-md-center">
+			<div class="col-1">
+				Col_1
+			</div>
+			<div class="col-1">
+				Col_2
+			</div>
+		</div>
+	</div>
+
+	<hr />
+</body>
+</html>

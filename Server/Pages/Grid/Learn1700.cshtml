@@ -14,28 +14,36 @@
 
 	<style>
 		div.row {
-			border: 1px solid grey;
+			border: 1px solid black;
 			background-color: rgb(211,211,211, 0.3);
 		}
 
 			div.row > div[class^="col"] {
-				border: 1px solid grey;
+				border: 1px solid red;
 				background-color: rgb(211,211,211, 0.3);
 			}
 	</style>
 </head>
 
 <body>
+	<div class="container shadow-lg py-2 my-3">
+		<h1>
+			&raquo; Learning New Grid (15) - Mix of Row-Cols-[1..6]
+		</h1>
+	</div>
 
-	<div class="container">
-		<h3>
-			Row columns
+	<div class="container shadow-lg py-2 my-3">
+		<h3 dir="rtl">
+			نکته مهم:
+			برنامه‌نویسان عزیز، تا درس قبل برای شما مناسب بوده
+			و باید آن‌ها را به دقت مطالعه کرده و یاد بگیرید
+			ولی از این درس به بعد، مطالب مناسب طراحان سایت می‌باشد
 		</h3>
 	</div>
 
 	<div class="container">
 		<h5>
-			Grid ()
+			Grid (1)
 		</h5>
 
 		<div class="row row-cols-auto">
@@ -54,55 +62,23 @@
 	<hr />
 
 	<div class="container">
-		<h3>
-			Variable Width Content
-		</h3>
-	</div>
-
-	<div class="container">
 		<h5>
-			Grid (38)
+			Grid (2)
 		</h5>
 
 		<div class="row">
 			<div class="col">
-				Col_1
+				col
 			</div>
 			<div class="col-auto">
-				Hello, World!
+				col-auto
 			</div>
 			<div class="col">
-				Col_3
-			</div>
-		</div>
-
-		<br />
-
-		<div class="row justify-content-center">
-			<div class="col">
-				Col_1
-			</div>
-			<div class="col-auto">
-				Hello, World!
-			</div>
-			<div class="col">
-				Col_3
-			</div>
-		</div>
-
-		<br />
-
-		<div class="row justify-content-center">
-			<div class="col col-lg-2">
-				Col_1
-			</div>
-			<div class="col-auto">
-				Hello, World!
-			</div>
-			<div class="col col-lg-2">
-				Col_3
+				col
 			</div>
 		</div>
 	</div>
+
+	<hr />
 </body>
 </html>
