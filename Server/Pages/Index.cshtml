@@ -1,71 +1,113 @@
 ﻿@page
 
-<h3>
-	Home
-</h3>
+<!doctype html>
 
-<hr />
+<html lang="en-US" dir="ltr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div>
-	<h3>
-		Useful Links
-	</h3>
+	<title>Learn</title>
 
-	<a href="https://www.w3.org/wiki/Common_HTML_entities_used_for_typography" target="_blank">
-		Common HTML Entities Used for Typography
-	</a>
-</div>
+	<link rel="icon" href="/favicon.ico" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<hr />
+	<style>
+		a {
+			text-decoration: none;
+		}
+	</style>
+</head>
 
-@for (int index = 100; index <= 2000; index += 100)
-{
-	string fileIndex =
-		index.ToString()
-		.PadLeft(totalWidth: 5, paddingChar: '0');
+<body>
+	<div class="container">
+		<h1>
+			Home
+		</h1>
 
-	<br />
-	<a href="~/Learn@(fileIndex)">Learn (@(index))</a>
-}
+		<hr />
 
-<hr />
+		<h3>
+			Table of Content
+		</h3>
 
-<h3>
-	Learning File Manager
-</h3>
+		<ul>
+			@for (int index = 100; index <= 800; index += 100)
+			{
+				string fileIndex =
+				index.ToString()
+				.PadLeft(totalWidth: 5, paddingChar: '0');
 
-<a href="~/FileManager/Step01/Index">Step (1)</a>
-<br />
-<a href="~/FileManager/Step02/Index">Step (2)</a>
+				<li>
+					<a href="~/Learn@(fileIndex)">Learn (@(index))</a>
+				</li>
+			}
+		</ul>
 
-<hr />
+		<hr />
 
-<h3>
-	Learning Grid
-</h3>
+		<h3>
+			Learning File Manager
+		</h3>
 
-@for (int index = 100; index <= 2100; index += 100)
-{
-	string fileIndex =
-		index.ToString()
-		.PadLeft(totalWidth: 4, paddingChar: '0');
+		<ul>
+			<li>
+				<a href="~/FileManager/Step01/Index">Step (1)</a>
+			</li>
+			<li>
+				<a href="~/FileManager/Step02/Index">Step (2)</a>
+			</li>
+		</ul>
 
-	<br />
-	<a href="~/Grid/Learn@(fileIndex)">Learn (@(index))</a>
-}
+		<hr />
 
-<hr />
+		<h3>
+			Learning Grid
+		</h3>
 
-<h3>
-	Learning CSS Positioning
-</h3>
+		<ul>
+			@for (int index = 100; index <= 2100; index += 100)
+			{
+				string fileIndex =
+				index.ToString()
+				.PadLeft(totalWidth: 4, paddingChar: '0');
 
-@for (int index = 100; index <= 1000; index += 100)
-{
-	string fileIndex =
-		index.ToString()
-		.PadLeft(totalWidth: 4, paddingChar: '0');
+				<li>
+					<a href="~/Grid/Learn@(fileIndex)">Learn (@(index))</a>
+				</li>
+			}
+		</ul>
 
-	<br />
-	<a href="~/Positioning/Learn@(fileIndex)">Learn (@(index))</a>
-}
+		<hr />
+
+		<h3>
+			Learning CSS Positioning
+		</h3>
+
+		<ul>
+			@for (int index = 100; index <= 1000; index += 100)
+			{
+				string fileIndex =
+				index.ToString()
+				.PadLeft(totalWidth: 4, paddingChar: '0');
+
+				<li>
+					<a href="~/Positioning/Learn@(fileIndex)">Learn (@(index))</a>
+				</li>
+			}
+		</ul>
+
+		<hr />
+
+		<h3>
+			Useful Links
+		</h3>
+
+		<a href="https://www.w3.org/wiki/Common_HTML_entities_used_for_typography" target="_blank">
+			Common HTML Entities Used for Typography
+		</a>
+
+		<hr />
+	</div>
+</body>
+</html>
