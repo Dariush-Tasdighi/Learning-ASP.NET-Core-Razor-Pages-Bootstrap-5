@@ -1,0 +1,31 @@
+﻿@page
+@model Server.Pages.FileManager.Step03.CreateDirectoryModel7
+
+@{
+	Layout = "Layouts/_LayoutFileManager";
+}
+
+<form method="post">
+
+	<div class="row">
+		<div class="col-12 p-3 col-md-8 offset-md-2 p-md-5 bg-light rounded shadow-lg">
+			<legend>
+				Create Directory
+			</legend>
+
+			<hr />
+
+			<partial name="PartialViews/_DisplayMessages" />
+
+			<div class="mb-3">
+				<label asp-for="ViewModel.DirectoryName" class="form-label"></label>
+				<input type="text" asp-for="ViewModel.DirectoryName" class="form-control" placeholder="" aria-label="Directory Name" />
+				<span asp-validation-for="ViewModel.DirectoryName" class="text-danger"></span>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Create</button>
+			<button type="reset" class="btn btn-secondary">Reset</button>
+		</div>
+	</div>
+
+</form>
