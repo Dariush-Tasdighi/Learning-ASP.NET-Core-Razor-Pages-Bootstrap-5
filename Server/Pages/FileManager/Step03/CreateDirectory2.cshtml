@@ -1,0 +1,28 @@
+﻿@page
+@model Server.Pages.FileManager.Step03.CreateDirectoryModel2
+
+@{
+	Layout = "Layouts/_LayoutFileManager";
+}
+
+<form method="post">
+
+	<div class="row">
+		<div class="col-12 p-3 col-md-8 offset-md-2 p-md-5 bg-light rounded shadow-lg">
+			<legend>
+				Create Directory
+			</legend>
+
+			<hr />
+
+			<div class="mb-3">
+				<label id="directoryName" class="form-label">Directory Name</label>
+				<input type="text" id="directoryName" name="directoryName" class="form-control" placeholder="" aria-label="Directory Name" />
+			</div>
+
+			<button type="submit" class="btn btn-primary">Create</button>
+			<button type="reset" class="btn btn-secondary">Reset</button>
+		</div>
+	</div>
+
+</form>
