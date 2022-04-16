@@ -16,9 +16,16 @@
 			<hr />
 
 			<div class="mb-3">
-				<label asp-for="@Model.ViewModel.DirectoryName" class="form-label"></label>
-				<input type="text" asp-for="@Model.ViewModel.DirectoryName" class="form-control" placeholder="" aria-label="Directory Name" />
+				<label asp-for="ViewModel.DirectoryName" class="form-label"></label>
+				<input asp-for="ViewModel.DirectoryName" class="form-control" />
 			</div>
+
+			@*
+				<div class="mb-3">
+				<label asp-for="@Model.ViewModel.DirectoryName" class="form-label"></label>
+				<input asp-for="@Model.ViewModel.DirectoryName" class="form-control" />
+				</div>
+			*@
 
 			<button type="submit" class="btn btn-primary">Create</button>
 			<button type="reset" class="btn btn-secondary">Reset</button>

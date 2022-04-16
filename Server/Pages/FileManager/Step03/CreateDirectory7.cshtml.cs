@@ -16,6 +16,8 @@ namespace Server.Pages.FileManager.Step03
 
 		public void OnPost()
 		{
+			System.Threading.Thread.Sleep(millisecondsTimeout: 5000);
+
 			if (ModelState.IsValid == false)
 			{
 				return;

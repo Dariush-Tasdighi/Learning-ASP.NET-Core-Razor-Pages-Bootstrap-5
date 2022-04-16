@@ -19,7 +19,7 @@
 
 			<div class="mb-3">
 				<label asp-for="ViewModel.DirectoryName" class="form-label"></label>
-				<input type="text" asp-for="ViewModel.DirectoryName" class="form-control" placeholder="" aria-label="Directory Name" />
+				<input asp-for="ViewModel.DirectoryName" class="form-control" />
 				<span asp-validation-for="ViewModel.DirectoryName" class="text-danger"></span>
 			</div>
 
@@ -29,3 +29,43 @@
 	</div>
 
 </form>
+
+@section Scripts
+{
+
+<script>
+
+	//$(document).ready(function() {
+
+	//	console.log( "ready (1)!" )
+
+	//})
+
+	//$(function() {
+
+	//	console.log( "ready (2)!" )
+
+	//})
+
+	$(function() {
+
+		$('form').submit(function (e) {
+
+			if ($(this).valid()) {
+
+				// JQuery در نسخه‌های قدیمی
+				//$('button').attr('disabled', 'disabled')
+				//$('input[type=button]').attr('disabled', 'disabled')
+
+				// JQuery در نسخه‌های جدید
+				$('button').prop('disabled', true)
+				$('input[type=button]').prop('disabled', true)
+
+			}
+
+		})
+
+	})
+
+</script>
+}

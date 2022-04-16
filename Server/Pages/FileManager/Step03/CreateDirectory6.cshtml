@@ -20,7 +20,7 @@
 
 				if (string.IsNullOrWhiteSpace(successMessage) == false)
 				{
-					<div class="alert alert-success">
+					<div class="alert alert-success" role="alert">
 						@(successMessage)
 					</div>
 				}
@@ -28,7 +28,7 @@
 
 			<div class="mb-3">
 				<label asp-for="ViewModel.DirectoryName" class="form-label"></label>
-				<input type="text" asp-for="ViewModel.DirectoryName" class="form-control" placeholder="" aria-label="Directory Name" />
+				<input asp-for="ViewModel.DirectoryName" class="form-control" />
 				<span asp-validation-for="ViewModel.DirectoryName" class="text-danger"></span>
 			</div>
 
