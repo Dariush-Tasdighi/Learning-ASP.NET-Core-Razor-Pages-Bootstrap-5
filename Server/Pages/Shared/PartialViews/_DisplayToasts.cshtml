@@ -1,0 +1,71 @@
+﻿<div aria-live="polite" aria-atomic="true" class="position-relative">
+	<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 10000;">
+
+		@{
+			var errorToasts =
+			ViewData[index: Infrastructure.BasePageModel.ErrorToastsKeyName] as
+			System.Collections.Generic.IList<string>;
+
+			if (errorToasts != null)
+			{
+				foreach (var message in errorToasts)
+				{
+					<div class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="toast-body">
+							@(message)
+						</div>
+					</div>
+				}
+			}
+
+			var warningToasts =
+			ViewData[index: Infrastructure.BasePageModel.WarningToastsKeyName] as
+			System.Collections.Generic.IList<string>;
+
+			if (warningToasts != null)
+			{
+				foreach (var message in warningToasts)
+				{
+					<div class="toast bg-warning text-black" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="toast-body">
+							@(message)
+						</div>
+					</div>
+				}
+			}
+
+			var successToasts =
+			ViewData[index: Infrastructure.BasePageModel.SuccessToastsKeyName] as
+			System.Collections.Generic.IList<string>;
+
+			if (successToasts != null)
+			{
+				foreach (var message in successToasts)
+				{
+					<div class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="toast-body">
+							@(message)
+						</div>
+					</div>
+				}
+			}
+		}
+
+	</div>
+</div>
+
+<script>
+
+	$(function() {
+
+		$('.toast').show()
+
+		$('.toast').click(function (e) {
+
+			$(this).hide()
+
+		})
+
+	})
+
+</script>
