@@ -105,6 +105,7 @@ namespace Server.Pages.FileManager.Step01
 
 			if (System.IO.Directory.Exists(path: PhysicalCurrentPath) == false)
 			{
+				CurrentPath = "/";
 				PhysicalCurrentPath = PhysicalRootPath;
 			}
 			// **************************************************

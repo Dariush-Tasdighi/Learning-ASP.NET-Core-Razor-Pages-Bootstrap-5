@@ -55,15 +55,6 @@ namespace Server.Pages.FileManager.Step02
 		#endregion /OnGet
 
 		#region CheckPathAndSetCurrentPath
-		/// <summary>
-		/// قانون
-		///
-		/// CurrentPath:
-		///		/
-		///		/Images/
-		///
-		/// یعنی همیشه دو طرف آن / دارد
-		/// </summary>
 		public void CheckPathAndSetCurrentPath(string? path)
 		{
 			// **************************************************
@@ -105,6 +96,7 @@ namespace Server.Pages.FileManager.Step02
 
 			if (System.IO.Directory.Exists(path: PhysicalCurrentPath) == false)
 			{
+				CurrentPath = "/";
 				PhysicalCurrentPath = PhysicalRootPath;
 			}
 			// **************************************************

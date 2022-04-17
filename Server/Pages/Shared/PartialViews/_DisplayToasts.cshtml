@@ -1,5 +1,5 @@
 ﻿<div aria-live="polite" aria-atomic="true" class="position-relative">
-	<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 10000;">
+	<div class="toast-container position-absolute top-0 end-0 p-3" style="z-index: 10000;">
 
 		@{
 			var errorToasts =
@@ -10,7 +10,7 @@
 			{
 				foreach (var message in errorToasts)
 				{
-					<div class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast bg-danger text-white opacity-50" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="8000" data-bs-animation="true" data-bs-autohide="true">
 						<div class="toast-body">
 							@(message)
 						</div>
@@ -26,7 +26,7 @@
 			{
 				foreach (var message in warningToasts)
 				{
-					<div class="toast bg-warning text-black" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast bg-warning text-black opacity-50" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000" data-bs-animation="true" data-bs-autohide="true">
 						<div class="toast-body">
 							@(message)
 						</div>
@@ -42,7 +42,7 @@
 			{
 				foreach (var message in successToasts)
 				{
-					<div class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast bg-success text-white opacity-50" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000" data-bs-animation="true" data-bs-autohide="true">
 						<div class="toast-body">
 							@(message)
 						</div>
@@ -56,13 +56,17 @@
 
 <script>
 
-	$(function() {
+	window.addEventListener('load', (e) => {
 
-		$('.toast').show()
+		var toastElements =
+			document.querySelectorAll('.toast')
 
-		$('.toast').click(function (e) {
+		toastElements.forEach((toastElement, index) => {
 
-			$(this).hide()
+			let toast =
+				new bootstrap.Toast(toastElement)
+
+			toast.show()
 
 		})
 

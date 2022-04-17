@@ -13,10 +13,10 @@
 					<th scope="col">
 						Name
 					</th>
-					<th>
+					<th scope="col">
 						Contents
 					</th>
-					<th>
+					<th scope="col">
 						Attributes
 					</th>
 					<th scope="col">
@@ -39,11 +39,11 @@
 					parentDirectoryPath = parentDirectoryPath[..parentDirectoryPath.LastIndexOf("/")];
 
 					<tr>
-						<th scope="row">
-						</th>
+						<th scope="row"></th>
 
 						<td colspan="6">
 							<i class="bi bi-reply-all"></i>
+
 							<a href="@(Model.PageAddress)" class="text-decoration-none">
 								[ROOT]
 							</a>
@@ -51,11 +51,11 @@
 					</tr>
 
 					<tr>
-						<th scope="row">
-						</th>
+						<th scope="row"></th>
 
 						<td colspan="6">
 							<i class="bi bi-reply"></i>
+
 							<a href="@(Model.PageAddress)?path=@(parentDirectoryPath)" class="text-decoration-none">
 								[PARENT]
 							</a>

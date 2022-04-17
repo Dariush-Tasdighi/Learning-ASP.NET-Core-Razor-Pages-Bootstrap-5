@@ -15,6 +15,8 @@
 </head>
 
 <body>
+	<partial name="PartialViews/_DisplayToasts" />
+
 	<partial name="PartialViews/_Header" />
 
 	<main role="main" class="my-5 py-4">
@@ -26,8 +28,6 @@
 	<partial name="PartialViews/_Footer" />
 
 	<partial name="PartialViews/_Scripts" />
-
-	<partial name="PartialViews/_DisplayToasts" />
 
 	@RenderSection(name: "Scripts", required: false)
 </body>
