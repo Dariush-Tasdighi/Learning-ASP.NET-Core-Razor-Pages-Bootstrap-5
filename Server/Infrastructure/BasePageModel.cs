@@ -22,7 +22,8 @@
 				return null;
 			}
 
-			text = text.Trim();
+			text =
+				text.Trim();
 
 			while (text.Contains("  "))
 			{
