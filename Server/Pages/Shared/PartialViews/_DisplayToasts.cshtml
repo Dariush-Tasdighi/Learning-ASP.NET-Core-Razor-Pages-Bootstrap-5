@@ -1,14 +1,29 @@
-﻿<div aria-live="polite" aria-atomic="true" class="position-relative">
+﻿@{
+	int delayStep = 1000;
+	int delay = 4000 - delayStep;
+
+	var errorToasts =
+		ViewData[index: Infrastructure.BasePageModel.ErrorToastsKeyName] as
+		System.Collections.Generic.IList<string>;
+
+	var warningToasts =
+		ViewData[index: Infrastructure.BasePageModel.WarningToastsKeyName] as
+		System.Collections.Generic.IList<string>;
+
+	var successToasts =
+		ViewData[index: Infrastructure.BasePageModel.SuccessToastsKeyName] as
+		System.Collections.Generic.IList<string>;
+
+	if (errorToasts == null && warningToasts == null && successToasts == null)
+	{
+		return;
+	}
+}
+
+<div aria-live="polite" aria-atomic="true" class="position-relative">
 	<div class="toast-container position-absolute top-0 end-0 p-3 opacity-50" style="z-index: 10000;">
 
 		@{
-			int delayStep = 1000;
-			int delay = 4000 - delayStep;
-
-			var errorToasts =
-			ViewData[index: Infrastructure.BasePageModel.ErrorToastsKeyName] as
-			System.Collections.Generic.IList<string>;
-
 			if (errorToasts != null)
 			{
 				foreach (var message in errorToasts)
@@ -23,10 +38,6 @@
 				}
 			}
 
-			var warningToasts =
-			ViewData[index: Infrastructure.BasePageModel.WarningToastsKeyName] as
-			System.Collections.Generic.IList<string>;
-
 			if (warningToasts != null)
 			{
 				foreach (var message in warningToasts)
@@ -40,10 +51,6 @@
 					</div>
 				}
 			}
-
-			var successToasts =
-			ViewData[index: Infrastructure.BasePageModel.SuccessToastsKeyName] as
-			System.Collections.Generic.IList<string>;
 
 			if (successToasts != null)
 			{
