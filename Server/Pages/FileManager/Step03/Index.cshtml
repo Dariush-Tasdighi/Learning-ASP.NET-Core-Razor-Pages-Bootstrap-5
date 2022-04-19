@@ -1,17 +1,22 @@
 ﻿@page
-@model Server.Pages.FileManager.Step03.IndexModel
 
 @{
+	ViewData["PageTitle"] = "Step (3)";
 	Layout = "Layouts/_LayoutFileManager";
 }
 
-<h3>
-	Step (3)
-</h3>
-
-<hr />
+<div class="row">
+	<div class="col pt-2 px-2 m-3 border rounded shadow-lg">
+		<h1>
+			Step (3)
+		</h1>
+	</div>
+</div>
 
 <ul>
+	<li>
+		<a asp-page="CreateDirectory0">Create Direcotry (0)</a>
+	</li>
 	<li>
 		<a asp-page="CreateDirectory1">Create Direcotry (1)</a>
 	</li>

@@ -2,13 +2,16 @@
 @model Server.Pages.FileManager.Step03.CreateDirectoryModel3
 
 @{
+	ViewData["PageTitle"] =
+		"Create Directory (3)";
+
 	Layout = "Layouts/_LayoutFileManager";
 }
 
 <form method="post">
 
 	<div class="row">
-		<div class="col-12 p-3 col-md-8 offset-md-2 p-md-5 bg-light rounded shadow-lg">
+		<div class="col-12 p-3 col-md-8 offset-md-2 p-md-5 bg-light border border-2 rounded-3 shadow-lg">
 			<legend>
 				Create Directory
 			</legend>
@@ -24,6 +27,13 @@
 				<div class="mb-3">
 				<label asp-for="@Model.ViewModel.DirectoryName" class="form-label"></label>
 				<input asp-for="@Model.ViewModel.DirectoryName" class="form-control" />
+				</div>
+			*@
+
+			@*
+				<div class="mb-3">
+				<label asp-for="ViewModel.DirectoryName" class="form-label"></label>
+				<input asp-for="ViewModel.DirectoryName" class="form-control" />
 				</div>
 			*@
 

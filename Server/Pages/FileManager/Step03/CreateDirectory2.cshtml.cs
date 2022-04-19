@@ -6,13 +6,22 @@ namespace Server.Pages.FileManager.Step03
 		{
 		}
 
+		/// <summary>
+		/// Handler
+		/// </summary>
 		public void OnGet()
 		{
 		}
 
+		/// <summary>
+		/// MVC + MVVM
+		/// </summary>
 		[Microsoft.AspNetCore.Mvc.BindProperty]
 		public string? DirectoryName { get; set; }
 
+		/// <summary>
+		/// Handler
+		/// </summary>
 		public void OnPost()
 		{
 		}
