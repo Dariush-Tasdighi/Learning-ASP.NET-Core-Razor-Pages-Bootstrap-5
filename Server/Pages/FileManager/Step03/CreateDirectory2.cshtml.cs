@@ -11,6 +11,7 @@ namespace Server.Pages.FileManager.Step03
 		/// </summary>
 		public void OnGet()
 		{
+			DirectoryName = "Test";
 		}
 
 		/// <summary>

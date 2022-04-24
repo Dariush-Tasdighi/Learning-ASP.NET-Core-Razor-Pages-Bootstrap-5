@@ -1,4 +1,4 @@
-namespace Server.Pages.FileManager.Step03
+﻿namespace Server.Pages.FileManager.Step03
 {
 	public class CreateDirectoryModel5 : Infrastructure.BasePageModel
 	{
@@ -9,7 +9,7 @@ namespace Server.Pages.FileManager.Step03
 
 		public void OnGet()
 		{
-			ViewModel.DirectoryName = "Test";
+			ViewModel.DirectoryName = null;
 		}
 
 		[Microsoft.AspNetCore.Mvc.BindProperty]
@@ -27,6 +27,9 @@ namespace Server.Pages.FileManager.Step03
 
 		public Microsoft.AspNetCore.Mvc.IActionResult OnPost()
 		{
+			// یک بار هم با غیر فعال کردن
+			// Client Validation
+			// این کد را تست کنید
 			if (ModelState.IsValid == false)
 			{
 				return Page();

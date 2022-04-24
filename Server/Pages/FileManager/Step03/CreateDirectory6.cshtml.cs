@@ -9,7 +9,7 @@ namespace Server.Pages.FileManager.Step03
 
 		public void OnGet()
 		{
-			ViewModel.DirectoryName = "Test";
+			ViewModel.DirectoryName = null;
 		}
 
 		[Microsoft.AspNetCore.Mvc.BindProperty]
