@@ -31,7 +31,7 @@
 		[System.ComponentModel.DataAnnotations.StringLength
 			(maximumLength: 20,
 			MinimumLength = 2,
-			ErrorMessage = "The string length of {0} should be min. {2} and max {1}  chars!")]
+			ErrorMessage = "The string length of {0} should be min. {2} and max {1} chars!")]
 		public string? DirectoryName { get; set; }
 		// **********
 	}
