@@ -1,5 +1,5 @@
-﻿//namespace Server.ViewModels.FileManager.Step3
-namespace ViewModels.FileManager.Step3
+﻿//namespace Server.ViewModels.FileManager.Step03
+namespace ViewModels.FileManager.Step03
 {
 	public class CreateDirectory3ViewModel : object
 	{

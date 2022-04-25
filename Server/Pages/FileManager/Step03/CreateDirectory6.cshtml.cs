@@ -7,13 +7,13 @@ namespace Server.Pages.FileManager.Step03
 			ViewModel = new();
 		}
 
+		[Microsoft.AspNetCore.Mvc.BindProperty]
+		public ViewModels.FileManager.Step03.CreateDirectory6ViewModel ViewModel { get; set; }
+
 		public void OnGet()
 		{
 			ViewModel.DirectoryName = null;
 		}
-
-		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.FileManager.Step3.CreateDirectory6ViewModel ViewModel { get; set; }
 
 		public Microsoft.AspNetCore.Mvc.IActionResult OnPost()
 		{

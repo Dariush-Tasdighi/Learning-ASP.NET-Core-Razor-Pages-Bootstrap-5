@@ -7,12 +7,12 @@ namespace Server.Pages.FileManager.Step03
 			ViewModel = new();
 		}
 
+		[Microsoft.AspNetCore.Mvc.BindProperty]
+		public ViewModels.FileManager.Step03.CreateDirectory8ViewModel ViewModel { get; set; }
+
 		public void OnGet()
 		{
 		}
-
-		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.FileManager.Step3.CreateDirectory8ViewModel ViewModel { get; set; }
 
 		public void OnPost()
 		{

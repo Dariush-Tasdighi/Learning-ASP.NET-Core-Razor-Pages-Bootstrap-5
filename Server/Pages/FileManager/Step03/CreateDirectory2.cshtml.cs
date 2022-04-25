@@ -7,18 +7,18 @@ namespace Server.Pages.FileManager.Step03
 		}
 
 		/// <summary>
+		/// MVC + MVVM
+		/// </summary>
+		[Microsoft.AspNetCore.Mvc.BindProperty]
+		public string? DirectoryName { get; set; }
+
+		/// <summary>
 		/// Handler
 		/// </summary>
 		public void OnGet()
 		{
 			DirectoryName = "Test";
 		}
-
-		/// <summary>
-		/// MVC + MVVM
-		/// </summary>
-		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public string? DirectoryName { get; set; }
 
 		/// <summary>
 		/// Handler

@@ -7,13 +7,13 @@
 			ViewModel = new();
 		}
 
+		[Microsoft.AspNetCore.Mvc.BindProperty]
+		public ViewModels.FileManager.Step03.CreateDirectory5ViewModel ViewModel { get; set; }
+
 		public void OnGet()
 		{
 			ViewModel.DirectoryName = null;
 		}
-
-		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.FileManager.Step3.CreateDirectory5ViewModel ViewModel { get; set; }
 
 		//public void OnPost()
 		//{

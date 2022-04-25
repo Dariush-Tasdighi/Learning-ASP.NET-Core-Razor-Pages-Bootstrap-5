@@ -1,8 +1,8 @@
-﻿namespace ViewModels.FileManager.Step3
+﻿namespace ViewModels.FileManager.Step03
 {
-	public class CreateDirectory6ViewModel : object
+	public class CreateDirectory8ViewModel : object
 	{
-		public CreateDirectory6ViewModel() : base()
+		public CreateDirectory8ViewModel() : base()
 		{
 		}
 

@@ -1,4 +1,4 @@
-﻿namespace ViewModels.FileManager.Step3
+﻿namespace ViewModels.FileManager.Step03
 {
 	public class CreateDirectory4ViewModel : object
 	{
