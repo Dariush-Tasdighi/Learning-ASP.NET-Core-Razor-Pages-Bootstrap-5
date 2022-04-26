@@ -14,11 +14,14 @@ namespace Server.Pages.FileManager.Step03
 		{
 		}
 
-		public Microsoft.AspNetCore.Mvc.IActionResult OnPost()
+		public void OnPost()
 		{
 			if (ModelState.IsValid == false)
 			{
-				return Page();
+				ViewData["ErrorMessage"] =
+					"Your directory was not created!";
+
+				return;
 			}
 
 			ViewData["SuccessMessage"] =
@@ -26,7 +29,7 @@ namespace Server.Pages.FileManager.Step03
 
 			//return RedirectToPage(pageName: "Index");
 
-			return Page();
+			return;
 		}
 	}
 }

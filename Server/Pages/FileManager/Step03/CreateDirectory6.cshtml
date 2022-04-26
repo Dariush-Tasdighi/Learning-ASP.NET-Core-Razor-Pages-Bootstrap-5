@@ -19,6 +19,17 @@
 			<hr />
 
 			@{
+				var errorMessage = ViewData["ErrorMessage"]?.ToString();
+
+				if (string.IsNullOrWhiteSpace(errorMessage) == false)
+				{
+					<div class="alert alert-danger" role="alert">
+						@(errorMessage)
+					</div>
+				}
+			}
+
+			@{
 				var successMessage = ViewData["SuccessMessage"]?.ToString();
 
 				if (string.IsNullOrWhiteSpace(successMessage) == false)
