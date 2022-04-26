@@ -12,7 +12,6 @@ namespace Server.Pages.FileManager.Step03
 
 		public void OnGet()
 		{
-			ViewModel.DirectoryName = null;
 		}
 
 		public Microsoft.AspNetCore.Mvc.IActionResult OnPost()
