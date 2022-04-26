@@ -44,6 +44,10 @@
 				return false;
 			}
 
+			//var list =
+			//	ViewData["ErrorMessages"] as
+			//	System.Collections.Generic.IList<string>;
+
 			var list =
 				ViewData[index: ErrorMessagesKeyName] as
 				System.Collections.Generic.IList<string>;
