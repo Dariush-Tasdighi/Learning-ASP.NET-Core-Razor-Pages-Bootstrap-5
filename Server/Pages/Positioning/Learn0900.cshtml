@@ -1,0 +1,86 @@
+﻿@page
+
+<!doctype html>
+
+<html lang="en-US" dir="ltr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Learn</title>
+
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="p-2 m-3 border rounded shadow-lg">
+			&raquo; Position with Bootstrap Classes
+		</h1>
+	</div>
+
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col">
+				<button class="btn btn-primary">Like Me!</button>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<button class="btn btn-primary">Like Me! <i class="bi bi-heart-fill"></i></button>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<button class="btn btn-primary">Like Me! <i class="bi bi-heart-fill text-danger"></i></button>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<button class="btn btn-primary">Like Me! <i class="bi bi-heart-fill text-danger small"></i></button>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<button class="btn btn-primary position-relative">
+					Like Me! <i class="bi bi-heart-fill text-danger small position-absolute top-0 start-100"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<button class="btn btn-primary position-relative">
+					Like Me! <i class="bi bi-heart-fill text-danger small position-absolute top-0 end-0"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<button class="btn btn-primary position-relative">
+					Like Me! <i class="bi bi-heart-fill text-danger small position-absolute top-0 start-100 translate-middle"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h3>
+			&mdash; Reference
+		</h3>
+
+		<a href="https://getbootstrap.com/docs/5.0/utilities/position/" target="_blank">Position</a>
+	</div>
+
+	<hr />
+</body>
+</html>

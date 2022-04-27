@@ -1,0 +1,213 @@
+﻿@page
+
+<!doctype html>
+
+<html lang="en-US" dir="ltr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Learn</title>
+
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+</head>
+
+<body>
+	<div class="position-fixed top-0 start-0 p-3" style="z-index: 11">
+		<div id="liveToast1" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<i class="bi bi-heart-fill text-danger me-2"></i>
+				<strong class="me-auto">Bootstrap</strong>
+				<small>11 mins ago</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				Hello, World! This is a toast message.
+			</div>
+		</div>
+	</div>
+
+	<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+		<div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<i class="bi bi-heart-fill text-danger me-2"></i>
+				<strong class="me-auto">Bootstrap</strong>
+				<small>11 mins ago</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				Hello, World! This is a toast message.
+			</div>
+		</div>
+	</div>
+
+	<div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+		<div id="liveToast3" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<i class="bi bi-heart-fill text-danger me-2"></i>
+				<strong class="me-auto">Bootstrap</strong>
+				<small>11 mins ago</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				Hello, World! This is a toast message.
+			</div>
+		</div>
+	</div>
+
+	<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+		<div id="liveToast4" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<i class="bi bi-heart-fill text-danger me-2"></i>
+				<strong class="me-auto">Bootstrap</strong>
+				<small>11 mins ago</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				Hello, World! This is a toast message.
+			</div>
+		</div>
+	</div>
+
+	<div class="position-fixed top-50 start-50 p-3" style="z-index: 11">
+		<div id="liveToast5" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<i class="bi bi-heart-fill text-danger me-2"></i>
+				<strong class="me-auto">Bootstrap</strong>
+				<small>11 mins ago</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				Hello, World! This is a toast message.
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<h1 class="p-2 m-3 border rounded shadow-lg">
+			&raquo; Bootstrap Toast
+		</h1>
+	</div>
+
+	<div class="container">
+		<button type="button" class="btn btn-primary" id="liveToastButton1">Show Live Toast (1)</button>
+
+		<button type="button" class="btn btn-primary" id="liveToastButton2">Show Live Toast (2)</button>
+
+		<button type="button" class="btn btn-primary" id="liveToastButton3">Show Live Toast (3)</button>
+
+		<button type="button" class="btn btn-primary" id="liveToastButton4">Show Live Toast (4)</button>
+
+		<button type="button" class="btn btn-primary" id="liveToastButton5">Show Live Toast (5)</button>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<h3>
+			&mdash; Reference
+		</h3>
+
+		<a href="https://getbootstrap.com/docs/5.1/components/toasts/" target="_blank">Toasts</a>
+	</div>
+
+	<hr />
+
+	<script src="~/lib/bootstrap/js/bootstrap.js"></script>
+
+	<script>
+		var liveToast1 =
+			document.getElementById('liveToast1')
+
+		var liveToast2 =
+			document.getElementById('liveToast2')
+
+		var liveToast3 =
+			document.getElementById('liveToast3')
+
+		var liveToast4 =
+			document.getElementById('liveToast4')
+
+		var liveToast5 =
+			document.getElementById('liveToast5')
+
+		var liveToastButton1 =
+			document.getElementById('liveToastButton1')
+
+		var liveToastButton2 =
+			document.getElementById('liveToastButton2')
+
+		var liveToastButton3 =
+			document.getElementById('liveToastButton3')
+
+		var liveToastButton4 =
+			document.getElementById('liveToastButton4')
+
+		var liveToastButton5 =
+			document.getElementById('liveToastButton5')
+
+		if (liveToastButton1) {
+
+		  liveToastButton1.addEventListener('click', function () {
+
+			var toast =
+				new bootstrap.Toast(liveToast1)
+
+			toast.show()
+
+		  })
+		}
+
+		if (liveToastButton2) {
+
+		  liveToastButton2.addEventListener('click', function () {
+
+			var toast =
+				new bootstrap.Toast(liveToast2)
+
+			toast.show()
+
+		  })
+		}
+
+		if (liveToastButton3) {
+
+		  liveToastButton3.addEventListener('click', function () {
+
+			var toast =
+				new bootstrap.Toast(liveToast3)
+
+			toast.show()
+
+		  })
+		}
+
+		if (liveToastButton4) {
+
+		  liveToastButton4.addEventListener('click', function () {
+
+			var toast =
+				new bootstrap.Toast(liveToast4)
+
+			toast.show()
+
+		  })
+		}
+
+		if (liveToastButton5) {
+
+		  liveToastButton5.addEventListener('click', function () {
+
+			var toast =
+				new bootstrap.Toast(liveToast5)
+
+			toast.show()
+
+		  })
+		}
+
+	</script>
+</body>
+</html>
