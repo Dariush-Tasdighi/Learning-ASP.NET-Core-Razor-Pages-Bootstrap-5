@@ -1,0 +1,57 @@
+﻿@page
+@model Server.Pages.Security.Login2Model
+
+@{
+	var pageTitle = "Login";
+
+	Layout = "Layouts/_Security";
+	ViewData["PageTitle"] = pageTitle;
+}
+
+<form method="post">
+
+	<div class="container mt-0 mt-sm-1 mt-md-3 mt-lg-5">
+		<div class="row">
+			<div class="col-12 p-3 col-md-8 offset-md-2 p-md-4 col-lg-6 offset-lg-3 p-lg-5 bg-light border border-2 rounded-3 shadow-lg">
+				<legend>
+					@(pageTitle)
+				</legend>
+
+				<div class="mb-3">
+					<label asp-for="ViewModel.Username" class="form-label"></label>
+					<input asp-for="ViewModel.Username" class="form-control" />
+					<span asp-validation-for="ViewModel.Username" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label asp-for="ViewModel.Password" class="form-label"></label>
+					<input asp-for="ViewModel.Password" class="form-control" />
+					<span asp-validation-for="ViewModel.Password" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<div class="form-check">
+						<input asp-for="ViewModel.RememberMe" class="form-check-input" />
+						<label asp-for="ViewModel.RememberMe" class="form-check-label"></label>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<button type="submit" class="btn btn-primary">Login</button>
+					<button type="reset" class="btn btn-secondary">Reset</button>
+				</div>
+
+				<hr class="mt-4" />
+
+				<div class="text-center">
+					<a href="#">Forgot Password</a>
+					|
+					<a href="#">Register</a>
+					|
+					<a href="#">Home</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>
