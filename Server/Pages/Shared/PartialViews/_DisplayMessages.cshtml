@@ -3,8 +3,12 @@
 	//ViewData["ErrorMessages"] as
 	//System.Collections.Generic.IList<string>;
 
+	//var errorMessages =
+	//ViewData[index: Infrastructure.BasePageModel.ErrorMessagesKeyName] as
+	//System.Collections.Generic.IList<string>;
+
 	var errorMessages =
-	ViewData[index: Infrastructure.BasePageModel.ErrorMessagesKeyName] as
+	TempData[key: Infrastructure.BasePageModel.ErrorMessagesKeyName] as
 	System.Collections.Generic.IList<string>;
 
 	if (errorMessages != null && errorMessages.Count != 0)
@@ -20,7 +24,7 @@
 	}
 
 	var warningMessages =
-	ViewData[index: Infrastructure.BasePageModel.WarningMessagesKeyName] as
+	TempData[key: Infrastructure.BasePageModel.WarningMessagesKeyName] as
 	System.Collections.Generic.IList<string>;
 
 	if (warningMessages != null && warningMessages.Count != 0)
@@ -36,7 +40,7 @@
 	}
 
 	var successMessages =
-	ViewData[index: Infrastructure.BasePageModel.SuccessMessagesKeyName] as
+	TempData[key: Infrastructure.BasePageModel.SuccessMessagesKeyName] as
 	System.Collections.Generic.IList<string>;
 
 	if (successMessages != null && successMessages.Count != 0)

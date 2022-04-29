@@ -3,15 +3,15 @@
 	int delay = 4000 - delayStep;
 
 	var errorToasts =
-		ViewData[index: Infrastructure.BasePageModel.ErrorToastsKeyName] as
+		TempData[key: Infrastructure.BasePageModel.ErrorToastsKeyName] as
 		System.Collections.Generic.IList<string>;
 
 	var warningToasts =
-		ViewData[index: Infrastructure.BasePageModel.WarningToastsKeyName] as
+		TempData[key: Infrastructure.BasePageModel.WarningToastsKeyName] as
 		System.Collections.Generic.IList<string>;
 
 	var successToasts =
-		ViewData[index: Infrastructure.BasePageModel.SuccessToastsKeyName] as
+		TempData[key: Infrastructure.BasePageModel.SuccessToastsKeyName] as
 		System.Collections.Generic.IList<string>;
 
 	if ((errorToasts == null || errorToasts.Count == 0) &&

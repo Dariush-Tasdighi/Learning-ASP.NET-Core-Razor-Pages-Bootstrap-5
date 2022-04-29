@@ -48,8 +48,12 @@
 			//	ViewData["ErrorMessages"] as
 			//	System.Collections.Generic.IList<string>;
 
+			//var list =
+			//	ViewData[index: ErrorMessagesKeyName] as
+			//	System.Collections.Generic.IList<string>;
+
 			var list =
-				ViewData[index: ErrorMessagesKeyName] as
+				TempData[key: ErrorMessagesKeyName] as
 				System.Collections.Generic.IList<string>;
 
 			if (list == null)
@@ -57,7 +61,9 @@
 				list =
 					new System.Collections.Generic.List<string>();
 
-				ViewData[index: ErrorMessagesKeyName] = list;
+				//ViewData[index: ErrorMessagesKeyName] = list;
+
+				TempData[key: ErrorMessagesKeyName] = list;
 			}
 
 			if (list.Contains(item: message))
@@ -81,7 +87,7 @@
 			}
 
 			var list =
-				ViewData[index: WarningMessagesKeyName] as
+				TempData[key: WarningMessagesKeyName] as
 				System.Collections.Generic.IList<string>;
 
 			if (list == null)
@@ -89,7 +95,7 @@
 				list =
 					new System.Collections.Generic.List<string>();
 
-				ViewData[index: WarningMessagesKeyName] = list;
+				TempData[key: WarningMessagesKeyName] = list;
 			}
 
 			if (list.Contains(item: message))
@@ -113,7 +119,7 @@
 			}
 
 			var list =
-				ViewData[index: SuccessMessagesKeyName] as
+				TempData[key: SuccessMessagesKeyName] as
 				System.Collections.Generic.IList<string>;
 
 			if (list == null)
@@ -121,7 +127,7 @@
 				list =
 					new System.Collections.Generic.List<string>();
 
-				ViewData[index: SuccessMessagesKeyName] = list;
+				TempData[key: SuccessMessagesKeyName] = list;
 			}
 
 			if (list.Contains(item: message))
@@ -145,7 +151,7 @@
 			}
 
 			var list =
-				ViewData[index: ErrorToastsKeyName] as
+				TempData[key: ErrorToastsKeyName] as
 				System.Collections.Generic.IList<string>;
 
 			if (list == null)
@@ -153,7 +159,7 @@
 				list =
 					new System.Collections.Generic.List<string>();
 
-				ViewData[index: ErrorToastsKeyName] = list;
+				TempData[key: ErrorToastsKeyName] = list;
 			}
 
 			if (list.Contains(item: message))
@@ -177,7 +183,7 @@
 			}
 
 			var list =
-				ViewData[index: WarningToastsKeyName] as
+				TempData[key: WarningToastsKeyName] as
 				System.Collections.Generic.IList<string>;
 
 			if (list == null)
@@ -185,7 +191,7 @@
 				list =
 					new System.Collections.Generic.List<string>();
 
-				ViewData[index: WarningToastsKeyName] = list;
+				TempData[key: WarningToastsKeyName] = list;
 			}
 
 			if (list.Contains(item: message))
@@ -209,7 +215,7 @@
 			}
 
 			var list =
-				ViewData[index: SuccessToastsKeyName] as
+				TempData[key: SuccessToastsKeyName] as
 				System.Collections.Generic.IList<string>;
 
 			if (list == null)
@@ -217,7 +223,7 @@
 				list =
 					new System.Collections.Generic.List<string>();
 
-				ViewData[index: SuccessToastsKeyName] = list;
+				TempData[key: SuccessToastsKeyName] = list;
 			}
 
 			if (list.Contains(item: message))
