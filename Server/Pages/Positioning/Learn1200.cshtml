@@ -1,0 +1,69 @@
+﻿@page
+
+<!doctype html>
+
+<html lang="en-US" dir="ltr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Learn</title>
+
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+</head>
+
+<body>
+	<div aria-live="polite" aria-atomic="true" class="position-relative">
+		<div class="toast-container position-absolute top-0 end-0 p-3 opacity-50" style="z-index: 10000;">
+
+			<div class="toast bg-danger text-white fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000" data-bs-animation="true" data-bs-autohide="true">
+				<div class="toast-body">
+					Error Message
+				</div>
+			</div>
+
+			<div class="toast bg-warning text-black fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="7000" data-bs-animation="true" data-bs-autohide="true">
+				<div class="toast-body">
+					Warning Message
+				</div>
+			</div>
+
+			<div class="toast bg-success text-white fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="10000" data-bs-animation="true" data-bs-autohide="true">
+				<div class="toast-body">
+					Success Message
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<h1 class="p-2 m-3 border rounded shadow-lg">
+			&raquo; Bootstrap Toast
+		</h1>
+	</div>
+
+	<script src="~/lib/bootstrap/js/bootstrap.js"></script>
+
+	<script>
+
+		window.addEventListener('load', (e) => {
+
+			var toastElements =
+				document.querySelectorAll('.toast')
+
+			toastElements.forEach((toastElement, index) => {
+
+				let toast =
+					new bootstrap.Toast(toastElement)
+
+				toast.show()
+
+			})
+
+		})
+
+	</script>
+</body>
+</html>
