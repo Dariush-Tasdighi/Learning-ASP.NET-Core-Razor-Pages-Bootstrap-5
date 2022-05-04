@@ -1,0 +1,28 @@
+﻿@{
+	var errorMessages =
+	TempData[key: Infrastructure.BasePageModel.ErrorMessagesKeyName] as
+	System.Collections.Generic.IList<string>;
+
+	var warningMessages =
+	TempData[key: Infrastructure.BasePageModel.WarningMessagesKeyName] as
+	System.Collections.Generic.IList<string>;
+
+	var successMessages =
+	TempData[key: Infrastructure.BasePageModel.SuccessMessagesKeyName] as
+	System.Collections.Generic.IList<string>;
+
+	if ((errorMessages == null || errorMessages.Count == 0) &&
+	(warningMessages == null || warningMessages.Count == 0) &&
+	(successMessages == null || successMessages.Count == 0))
+	{
+		return;
+	}
+}
+
+<div class="container">
+	<div class="row">
+		<div class="col-12 p-3 col-md-8 offset-md-2 p-md-5 bg-light border border-2 rounded-3 shadow-lg">
+			<partial name="PartialViews/_DisplayMessages" />
+		</div>
+	</div>
+</div>
