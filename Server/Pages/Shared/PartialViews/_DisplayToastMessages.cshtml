@@ -1,0 +1,82 @@
+﻿@{
+	int delayStep = 1000;
+	int delay = 4000 - delayStep;
+
+	var messages =
+	TempData[key: Infrastructure.Messages.KeyName] as Infrastructure.Messages;
+
+	if (messages == null || messages.HasAnyToastMessages == false)
+	{
+		return;
+	}
+}
+
+<div aria-live="polite" aria-atomic="true" class="posiiton-relative">
+	<div class="toast-container position-absolute top-0 end-0 p-3 opacity-50" style="z-index: 10000;">
+
+		@{
+			foreach (var message in messages.ToastErrors)
+			{
+				delay += delayStep;
+
+				<div class="toast bg-danger text-white align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
+					<div class="d-flex">
+						<div class="toast-body">
+							@(message)
+						</div>
+						<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+					</div>
+				</div>
+			}
+
+			foreach (var message in messages.ToastWarnings)
+			{
+				delay += delayStep;
+
+				<div class="toast bg-warning text-black align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
+					<div class="d-flex">
+						<div class="toast-body">
+							@(message)
+						</div>
+						<button type="button" class="btn-close btn-close-black me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+					</div>
+				</div>
+			}
+
+			foreach (var message in messages.ToastSuccesses)
+			{
+				delay += delayStep;
+
+				<div class="toast bg-success text-white align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
+					<div class="d-flex">
+						<div class="toast-body">
+							@(message)
+						</div>
+						<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+					</div>
+				</div>
+			}
+		}
+
+	</div>
+</div>
+
+<script>
+
+	window.addEventListener('load', (e) => {
+
+		var toastElements =
+			document.querySelectorAll('.toast')
+
+		toastElements.forEach((toastElement, index) => {
+
+			let toast =
+				new bootstrap.Toast(toastElement)
+
+			toast.show()
+
+		})
+
+	})
+
+</script>

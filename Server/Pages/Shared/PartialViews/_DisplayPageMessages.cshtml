@@ -1,0 +1,45 @@
+﻿@{
+	var messages =
+	TempData[key: Infrastructure.Messages.KeyName] as Infrastructure.Messages;
+
+	if (messages == null || messages.HasAnyPageMessages == false)
+	{
+		return;
+	}
+
+	if (messages.PageErrors.Count != 0)
+	{
+		<div class="alert alert-danger pb-0" role="alert">
+			<ul>
+				@foreach (var message in messages.PageErrors)
+				{
+					<li>@(message)</li>
+				}
+			</ul>
+		</div>
+	}
+
+	if (messages.PageWarnings.Count != 0)
+	{
+		<div class="alert alert-warning pb-0" role="alert">
+			<ul>
+				@foreach (var message in messages.PageWarnings)
+				{
+					<li>@(message)</li>
+				}
+			</ul>
+		</div>
+	}
+
+	if (messages.PageSuccesses.Count != 0)
+	{
+		<div class="alert alert-success pb-0" role="alert">
+			<ul>
+				@foreach (var message in messages.PageSuccesses)
+				{
+					<li>@(message)</li>
+				}
+			</ul>
+		</div>
+	}
+}

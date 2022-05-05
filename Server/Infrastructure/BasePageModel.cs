@@ -235,5 +235,23 @@
 
 			return true;
 		}
+
+		public Messages Messages
+		{
+			get
+			{
+				var messages =
+					TempData[key: Messages.KeyName] as Messages;
+
+				if (messages == null)
+				{
+					messages = new();
+
+					TempData[key: Messages.KeyName] = messages;
+				}
+
+				return messages;
+			}
+		}
 	}
 }
