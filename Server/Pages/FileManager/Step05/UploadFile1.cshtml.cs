@@ -27,21 +27,23 @@ namespace Server.Pages.FileManager.Step05
 
 		// کار نمی‌کند Razor Pages در
 		//[Microsoft.AspNetCore.Mvc.RequestFormLimits(MultipartBodyLengthLimit = 104857600)]
-		public async System.Threading.Tasks.Task
-			OnPostAsync(Microsoft.AspNetCore.Http.IFormFile? file)
+		public async System.Threading.Tasks.Task OnPostAsync
+			(bool overrideIfFileExists, Microsoft.AspNetCore.Http.IFormFile? file)
 		{
 			try
 			{
-				await CheckFileValidationAndSave(file: file);
+				await CheckFileValidationAndSaveAsync
+					(overrideIfFileExists: overrideIfFileExists, file: file);
 			}
 			catch (System.Exception ex)
 			{
-				AddErrorToast(message: ex.Message);
+				AddErrorToast
+					(message: ex.Message);
 			}
 		}
 
-		private async System.Threading.Tasks.Task<bool>
-			CheckFileValidationAndSave(Microsoft.AspNetCore.Http.IFormFile? file)
+		private async System.Threading.Tasks.Task<bool> CheckFileValidationAndSaveAsync
+			(bool overrideIfFileExists, Microsoft.AspNetCore.Http.IFormFile? file)
 		{
 			var result =
 				CheckFileValidation(file: file);
@@ -59,14 +61,18 @@ namespace Server.Pages.FileManager.Step05
 			var physicalPathName =
 				$"C:\\Temp\\{fileName}";
 
-			if (System.IO.Directory.Exists(path: physicalPathName))
+			if (overrideIfFileExists == false)
 			{
-				var errorMessage =
-					string.Format("File '{0}' already exists!", fileName);
+				if (System.IO.File.Exists(path: physicalPathName))
+				{
+					var errorMessage = string.Format
+						("File '{0}' already exists!", fileName);
 
-				AddErrorToast(message: errorMessage);
+					AddErrorToast
+						(message: errorMessage);
 
-				return false;
+					return false;
+				}
 			}
 
 			using (var stream = System.IO.File.Create(path: physicalPathName))
@@ -80,18 +86,20 @@ namespace Server.Pages.FileManager.Step05
 
 			if (string.Compare(file.FileName, fileName, ignoreCase: true) == 0)
 			{
-				var successMessage =
-					string.Format("File '{0}' uploaded successfully.", fileName);
+				var successMessage = string.Format
+					("File '{0}' uploaded successfully.", fileName);
 
-				AddSuccessToast(message: successMessage);
+				AddSuccessToast
+					(message: successMessage);
 			}
 			else
 			{
-				var successMessage =
-					string.Format("File '{0}' with the name of '{1}' uploaded successfully.",
+				var successMessage = string.Format
+					("File '{0}' with the name of '{1}' uploaded successfully.",
 					file.FileName, fileName);
 
-				AddSuccessToast(message: successMessage);
+				AddSuccessToast
+					(message: successMessage);
 			}
 
 			return true;
@@ -105,44 +113,48 @@ namespace Server.Pages.FileManager.Step05
 				var errorMessage =
 					"You did not specify any file for uploading!";
 
-				AddErrorToast(message: errorMessage);
+				AddErrorToast
+					(message: errorMessage);
 
 				return false;
 			}
 
 			if (file.Length == 0)
 			{
-				var errorMessage =
-					string.Format("File '{0}' did not uploaded successfully!", file.FileName);
+				var errorMessage = string.Format
+					("File '{0}' did not uploaded successfully!", file.FileName);
 
-				AddErrorToast(message: errorMessage);
+				AddErrorToast
+					(message: errorMessage);
 
 				return false;
 			}
 
 			var fileExtension =
-				System.IO.Path.GetExtension(path: file.FileName)?.ToLower();
+				System.IO.Path.GetExtension
+				(path: file.FileName)?.ToLower();
 
 			if (fileExtension == null)
 			{
-				var errorMessage =
-					string.Format("File '{0}' does not have any extension!", file.FileName);
+				var errorMessage = string.Format
+					("File '{0}' does not have any extension!", file.FileName);
 
-				AddErrorToast(message: errorMessage);
+				AddErrorToast
+					(message: errorMessage);
 
 				return false;
 			}
 
-			var permittedFileExtensions =
-				new string[]
-				{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", "ico", "png", "jpg", "jpeg", "bmp" };
+			var permittedFileExtensions = new string[]
+				{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp" };
 
 			if (permittedFileExtensions.ToList().Contains(item: fileExtension) == false)
 			{
-				var errorMessage =
-					string.Format("Site does not support your file '{0}' extension!", file.FileName);
+				var errorMessage = string.Format
+					("Site does not support your file '{0}' extension!", file.FileName);
 
-				AddErrorToast(message: errorMessage);
+				AddErrorToast
+					(message: errorMessage);
 
 				return false;
 			}

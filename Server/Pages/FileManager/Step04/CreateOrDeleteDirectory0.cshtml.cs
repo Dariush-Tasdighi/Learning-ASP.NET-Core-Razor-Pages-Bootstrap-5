@@ -12,11 +12,12 @@ namespace Server.Pages.FileManager.Step04
 
 		public void OnPost(string directoryName)
 		{
-			System.Threading.Thread.Sleep(millisecondsTimeout: 5000);
+			System.Threading.Thread.Sleep(millisecondsTimeout: 2000);
 
 			if(string.IsNullOrWhiteSpace(directoryName))
 			{
-				AddErrorToast("You did not specify directory name!");
+				AddErrorToast
+					(message: "You did not specify directory name!");
 
 				return;
 			}
@@ -24,11 +25,12 @@ namespace Server.Pages.FileManager.Step04
 
 		public void OnPostDelete(string directoryName)
 		{
-			System.Threading.Thread.Sleep(millisecondsTimeout: 5000);
+			System.Threading.Thread.Sleep(millisecondsTimeout: 2000);
 
 			if (string.IsNullOrWhiteSpace(directoryName))
 			{
-				AddErrorToast("You did not specify directory name!");
+				AddErrorToast
+					(message: "You did not specify directory name!");
 
 				return;
 			}

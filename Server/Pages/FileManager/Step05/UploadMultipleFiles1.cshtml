@@ -1,11 +1,11 @@
 ﻿@page
-@model Server.Pages.FileManager.Step05.UploadFile1
+@model Server.Pages.FileManager.Step05.UploadMultipleFiles1
 
 @{
 	Layout =
 		"Layouts/_LayoutFileManager";
 
-	ViewData["PageTitle"] = "Upload File (1)";
+	ViewData["PageTitle"] = "Upload Multiple Files0 (0)";
 }
 
 <form method="post" enctype="multipart/form-data">
@@ -13,20 +13,21 @@
 	<div class="row">
 		<div class="col-12 p-3 col-md-8 offset-md-2 p-md-5 bg-light border border-2 rounded-3 shadow-lg">
 			<legend>
-				Upload File (Note: Microsoft.AspNetCore.Mvc.RequestFormLimits)
+				Upload File (Note: multiple)
 			</legend>
 
 			<hr />
 
 			<div class="mb-3">
-				<label for="file" class="form-label">Select File</label>
-				<input type="file" id="file" name="file" class="form-control" aria-label="Select File" />
+				<label asp-for="ViewModel.Files" class="form-label"></label>
+				<input asp-for="ViewModel.Files" class="form-control" />
+				<span asp-validation-for="ViewModel.Files" class="text-danger"></span>
 			</div>
 
 			<div class="mb-3">
 				<div class="form-check">
-					<input type="checkbox" id="overrideIfFileExists" name="overrideIfFileExists" value="true" class="form-check-input" aria-label="Override If File Exists" />
-					<label for="overrideIfFileExists" class="form-check-label">Override If File Exists</label>
+					<input asp-for="ViewModel.OverrideIfFileExists" class="form-check-input" />
+					<label asp-for="ViewModel.OverrideIfFileExists" class="form-check-label"></label>
 				</div>
 			</div>
 

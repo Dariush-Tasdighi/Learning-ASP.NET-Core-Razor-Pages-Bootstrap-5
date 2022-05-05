@@ -3,36 +3,44 @@
 namespace Server.Pages.FileManager.Step05
 {
 	[Microsoft.AspNetCore.Mvc.RequestSizeLimit(bytes: 104857600)]
-	public class UploadMultipleFiles0 : Infrastructure.BasePageModel
+	public class UploadMultipleFiles1 : Infrastructure.BasePageModel
 	{
-		public UploadMultipleFiles0() : base()
+		public UploadMultipleFiles1() : base()
 		{
+			ViewModel = new();
 		}
+
+		[Microsoft.AspNetCore.Mvc.BindProperty]
+		public ViewModels.FileManager.Step05.UploadMultipleFiles1ViewModel ViewModel { get; set; }
 
 		public void OnGet()
 		{
 		}
 
-		public async System.Threading.Tasks.Task OnPostAsync(bool overrideIfFileExists,
-			System.Collections.Generic.IList<Microsoft.AspNetCore.Http.IFormFile>? files)
+		public async System.Threading.Tasks.Task OnPostAsync()
 		{
 			try
 			{
-				if (files == null || files.Count == 0)
+				if(ModelState.IsValid == false)
 				{
-					var errorMessage =
-						"You did not specify any file for uploading!";
-
-					AddErrorToast
-						(message: errorMessage);
-
 					return;
 				}
 
-				foreach (var file in files)
+				//if (ViewModel.Files == null || ViewModel.Files.Count == 0)
+				//{
+				//	var errorMessage =
+				//		"You did not specify any file for uploading!";
+
+				//	AddErrorToast
+				//		(message: errorMessage);
+
+				//	return;
+				//}
+
+				foreach (var file in ViewModel.Files!)
 				{
 					await CheckFileValidationAndSaveAsync
-						(overrideIfFileExists: overrideIfFileExists, file: file);
+						(overrideIfFileExists: ViewModel.OverrideIfFileExists, file: file);
 				}
 			}
 			catch (System.Exception ex)

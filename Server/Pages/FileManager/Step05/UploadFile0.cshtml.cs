@@ -98,7 +98,7 @@ namespace Server.Pages.FileManager.Step05
 				// می‌خوانیم Application Settings که البته در پروژه واقعی، مقدار ذیل را از 
 				var permittedFileExtensions =
 					new string[]
-					{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", "ico", "png", "jpg", "jpeg", "bmp" };
+					{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp" };
 
 				if (permittedFileExtensions.ToList().Contains(item: fileExtension) == false)
 				{
