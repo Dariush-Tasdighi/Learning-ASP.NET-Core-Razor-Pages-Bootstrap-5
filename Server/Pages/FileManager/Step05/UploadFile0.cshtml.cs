@@ -24,7 +24,8 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage =
 						"You did not specify any file for uploading!";
 
-					AddErrorToast(message: errorMessage);
+					AddErrorToast
+						(message: errorMessage);
 
 					return;
 				}
@@ -36,10 +37,11 @@ namespace Server.Pages.FileManager.Step05
 
 				if (file.Length == 0)
 				{
-					var errorMessage =
-						string.Format("File '{0}' did not uploaded successfully!", fileName);
+					var errorMessage = string.Format
+						("File '{0}' did not uploaded successfully!", fileName);
 
-					AddErrorToast(message: errorMessage);
+					AddErrorToast
+						(message: errorMessage);
 
 					return;
 				}
@@ -69,10 +71,11 @@ namespace Server.Pages.FileManager.Step05
 
 				if (fileExtension == null)
 				{
-					var errorMessage =
-						string.Format("File '{0}' should have extension!", fileName);
+					var errorMessage = string.Format
+						("File '{0}' should have extension!", fileName);
 
-					AddErrorToast(message: errorMessage);
+					AddErrorToast
+						(message: errorMessage);
 
 					return;
 				}
@@ -96,16 +99,16 @@ namespace Server.Pages.FileManager.Step05
 				//}
 
 				// می‌خوانیم Application Settings که البته در پروژه واقعی، مقدار ذیل را از 
-				var permittedFileExtensions =
-					new string[]
-					{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp" };
+				var permittedFileExtensions = new string[]
+					{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp", ".txt" };
 
 				if (permittedFileExtensions.ToList().Contains(item: fileExtension) == false)
 				{
-					var errorMessage =
-						string.Format("The extension of file '{0}' does not support!", fileName);
+					var errorMessage = string.Format
+						("The extension of file '{0}' does not support!", fileName);
 
-					AddErrorToast(message: errorMessage);
+					AddErrorToast
+						(message: errorMessage);
 
 					return;
 				}
@@ -113,12 +116,13 @@ namespace Server.Pages.FileManager.Step05
 				var physicalPathName =
 					$"C:\\Temp\\{fileName}";
 
-				if (System.IO.Directory.Exists(path: physicalPathName))
+				if (System.IO.File.Exists(path: physicalPathName))
 				{
-					var errorMessage =
-						string.Format("File '{0}' already exists!", fileName);
+					var errorMessage = string.Format
+						("File '{0}' already exists!", fileName);
 
-					AddErrorToast(message: errorMessage);
+					AddErrorToast
+						(message: errorMessage);
 
 					return;
 				}
@@ -132,10 +136,11 @@ namespace Server.Pages.FileManager.Step05
 					stream.Close();
 				}
 
-				var successMessage =
-					string.Format("File '{0}' uploaded successfully.", fileName);
+				var successMessage = string.Format
+					("File '{0}' uploaded successfully.", fileName);
 
-				AddSuccessToast(message: successMessage);
+				AddSuccessToast
+					(message: successMessage);
 			}
 			catch (System.Exception ex)
 			{

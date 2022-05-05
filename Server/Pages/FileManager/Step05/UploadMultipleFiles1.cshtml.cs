@@ -10,6 +10,12 @@ namespace Server.Pages.FileManager.Step05
 			ViewModel = new();
 		}
 
+		//[Microsoft.AspNetCore.Mvc.BindProperty]
+		//public Microsoft.AspNetCore.Http.IFormFile? UploadedFile { get; set; }
+
+		//[Microsoft.AspNetCore.Mvc.BindProperty]
+		//public System.Collections.Generic.IList<Microsoft.AspNetCore.Http.IFormFile>? UploadedFiles { get; set; }
+
 		[Microsoft.AspNetCore.Mvc.BindProperty]
 		public ViewModels.FileManager.Step05.UploadMultipleFiles1ViewModel ViewModel { get; set; }
 
@@ -21,7 +27,7 @@ namespace Server.Pages.FileManager.Step05
 		{
 			try
 			{
-				if(ModelState.IsValid == false)
+				if (ModelState.IsValid == false)
 				{
 					return;
 				}
@@ -40,7 +46,7 @@ namespace Server.Pages.FileManager.Step05
 				foreach (var file in ViewModel.Files!)
 				{
 					await CheckFileValidationAndSaveAsync
-						(overrideIfFileExists: ViewModel.OverrideIfFileExists, file: file);
+						(overwriteIfFileExists: ViewModel.OverwriteIfFileExists, file: file);
 				}
 			}
 			catch (System.Exception ex)
@@ -52,7 +58,7 @@ namespace Server.Pages.FileManager.Step05
 
 		private async System.Threading.Tasks.Task<bool>
 			CheckFileValidationAndSaveAsync
-			(bool overrideIfFileExists, Microsoft.AspNetCore.Http.IFormFile? file)
+			(bool overwriteIfFileExists, Microsoft.AspNetCore.Http.IFormFile? file)
 		{
 			var result =
 				CheckFileValidation(file: file);
@@ -70,7 +76,7 @@ namespace Server.Pages.FileManager.Step05
 			var physicalPathName =
 				$"C:\\Temp\\{fileName}";
 
-			if (overrideIfFileExists == false)
+			if (overwriteIfFileExists == false)
 			{
 				if (System.IO.File.Exists(path: physicalPathName))
 				{
@@ -155,7 +161,7 @@ namespace Server.Pages.FileManager.Step05
 			}
 
 			var permittedFileExtensions = new string[]
-				{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp" };
+				{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp", ".txt" };
 
 			if (permittedFileExtensions.ToList().Contains(item: fileExtension) == false)
 			{

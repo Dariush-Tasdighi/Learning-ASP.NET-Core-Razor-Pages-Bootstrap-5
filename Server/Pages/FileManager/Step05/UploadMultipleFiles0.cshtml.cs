@@ -13,7 +13,7 @@ namespace Server.Pages.FileManager.Step05
 		{
 		}
 
-		public async System.Threading.Tasks.Task OnPostAsync(bool overrideIfFileExists,
+		public async System.Threading.Tasks.Task OnPostAsync(bool overwriteIfFileExists,
 			System.Collections.Generic.IList<Microsoft.AspNetCore.Http.IFormFile>? files)
 		{
 			try
@@ -32,7 +32,7 @@ namespace Server.Pages.FileManager.Step05
 				foreach (var file in files)
 				{
 					await CheckFileValidationAndSaveAsync
-						(overrideIfFileExists: overrideIfFileExists, file: file);
+						(overwriteIfFileExists: overwriteIfFileExists, file: file);
 				}
 			}
 			catch (System.Exception ex)
@@ -44,7 +44,7 @@ namespace Server.Pages.FileManager.Step05
 
 		private async System.Threading.Tasks.Task<bool>
 			CheckFileValidationAndSaveAsync
-			(bool overrideIfFileExists, Microsoft.AspNetCore.Http.IFormFile? file)
+			(bool overwriteIfFileExists, Microsoft.AspNetCore.Http.IFormFile? file)
 		{
 			var result =
 				CheckFileValidation(file: file);
@@ -62,7 +62,7 @@ namespace Server.Pages.FileManager.Step05
 			var physicalPathName =
 				$"C:\\Temp\\{fileName}";
 
-			if (overrideIfFileExists == false)
+			if (overwriteIfFileExists == false)
 			{
 				if (System.IO.File.Exists(path: physicalPathName))
 				{
@@ -147,7 +147,7 @@ namespace Server.Pages.FileManager.Step05
 			}
 
 			var permittedFileExtensions = new string[]
-				{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp" };
+				{ ".mp3", ".mp4", ".pdf", ".zip", ".rar", ".doc", ".docx", ".ico", ".png", ".jpg", ".jpeg", ".bmp", ".txt" };
 
 			if (permittedFileExtensions.ToList().Contains(item: fileExtension) == false)
 			{

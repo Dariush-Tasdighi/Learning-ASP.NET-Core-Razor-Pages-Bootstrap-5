@@ -9,7 +9,7 @@
 		// **********
 		[System.ComponentModel
 			.DataAnnotations.Display(Name = "Override If File Exists")]
-		public bool OverrideIfFileExists { get; set; }
+		public bool OverwriteIfFileExists { get; set; }
 		// **********
 
 		// **********
