@@ -1,5 +1,8 @@
 ﻿namespace Infrastructure
 {
+	/// <summary>
+	/// Version 1.0
+	/// </summary>
 	public class Messages : object
 	{
 		public enum MessageType
@@ -55,7 +58,7 @@
 				new System.Collections.Generic.List<string>();
 		}
 
-		private System.Collections.Generic.List<string> _pageErrors;
+		private readonly System.Collections.Generic.List<string> _pageErrors;
 
 		public System.Collections.Generic.IReadOnlyList<string> PageErrors
 		{
@@ -65,7 +68,7 @@
 			}
 		}
 
-		private System.Collections.Generic.List<string> _pageWarnings;
+		private readonly System.Collections.Generic.List<string> _pageWarnings;
 
 		public System.Collections.Generic.IReadOnlyList<string> PageWarnings
 		{
@@ -75,7 +78,7 @@
 			}
 		}
 
-		private System.Collections.Generic.List<string> _pageSuccesses;
+		private readonly System.Collections.Generic.List<string> _pageSuccesses;
 
 		public System.Collections.Generic.IReadOnlyList<string> PageSuccesses
 		{
@@ -102,7 +105,7 @@
 			}
 		}
 
-		private System.Collections.Generic.List<string> _toastErrors;
+		private readonly System.Collections.Generic.List<string> _toastErrors;
 
 		public System.Collections.Generic.IReadOnlyList<string> ToastErrors
 		{
@@ -112,7 +115,7 @@
 			}
 		}
 
-		private System.Collections.Generic.List<string> _toastWarnings;
+		private readonly System.Collections.Generic.List<string> _toastWarnings;
 
 		public System.Collections.Generic.IReadOnlyList<string> ToastWarnings
 		{
@@ -122,7 +125,7 @@
 			}
 		}
 
-		private System.Collections.Generic.List<string> _toastSuccesses;
+		private readonly System.Collections.Generic.List<string> _toastSuccesses;
 
 		public System.Collections.Generic.IReadOnlyList<string> ToastSuccesses
 		{
@@ -308,6 +311,50 @@
 					return false;
 				}
 			}
+		}
+
+		public void ClearPageErrors()
+		{
+			_pageErrors.Clear();
+		}
+
+		public void ClearPageWarnings()
+		{
+			_pageWarnings.Clear();
+		}
+
+		public void ClearPageSuccesses()
+		{
+			_pageSuccesses.Clear();
+		}
+
+		public void ClearPageMessages()
+		{
+			ClearPageErrors();
+			ClearPageWarnings();
+			ClearPageSuccesses();
+		}
+
+		public void ClearToastErrors()
+		{
+			_toastErrors.Clear();
+		}
+
+		public void ClearToastWarnings()
+		{
+			_toastWarnings.Clear();
+		}
+
+		public void ClearToastSuccesses()
+		{
+			_toastSuccesses.Clear();
+		}
+
+		public void ClearToastMessages()
+		{
+			ClearToastErrors();
+			ClearToastWarnings();
+			ClearToastSuccesses();
 		}
 	}
 }
