@@ -7,8 +7,8 @@
 		}
 
 		// **********
-		[System.ComponentModel
-			.DataAnnotations.Display(Name = "Username")]
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Username")]
 
 		[System.ComponentModel.DataAnnotations.Required
 			(AllowEmptyStrings = false,
@@ -16,14 +16,17 @@
 
 		[System.ComponentModel.DataAnnotations.StringLength
 			(maximumLength: 20,
-			MinimumLength = 6,
-			ErrorMessage = "The string length of {0} should be min. {2} and max {1} chars!")]
+			ErrorMessage = "The maximum length of {0} is {1}!")]
+
+		[System.ComponentModel.DataAnnotations.RegularExpression
+			(pattern: Infrastructure.RegularExpression.Username,
+			ErrorMessage = "{0} is not valid!")]
 		public string? Username { get; set; }
 		// **********
 
 		// **********
-		[System.ComponentModel
-			.DataAnnotations.Display(Name = "Password")]
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Password")]
 
 		[System.ComponentModel.DataAnnotations.Required
 			(AllowEmptyStrings = false,
@@ -31,8 +34,14 @@
 
 		[System.ComponentModel.DataAnnotations.StringLength
 			(maximumLength: 20,
-			MinimumLength = 8,
-			ErrorMessage = "The string length of {0} should be min. {2} and max {1} chars!")]
+			ErrorMessage = "The maximum length of {0} is {1}!")]
+
+		[System.ComponentModel.DataAnnotations.RegularExpression
+			(pattern: Infrastructure.RegularExpression.Password,
+			ErrorMessage = "{0} is not valid!")]
+
+		[System.ComponentModel.DataAnnotations.DataType
+			(dataType: System.ComponentModel.DataAnnotations.DataType.Password)]
 		public string? Password { get; set; }
 		// **********
 
