@@ -16,6 +16,10 @@ namespace Server.Pages.Security
 
 		public void OnPost()
 		{
+			if (ModelState.IsValid == false)
+			{
+				return;
+			}
 		}
 	}
 }
