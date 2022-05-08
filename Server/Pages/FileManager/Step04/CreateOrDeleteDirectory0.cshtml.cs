@@ -16,7 +16,7 @@ namespace Server.Pages.FileManager.Step04
 
 			if(string.IsNullOrWhiteSpace(directoryName))
 			{
-				AddErrorToast
+				AddToastError
 					(message: "You did not specify directory name!");
 
 				return;
@@ -29,7 +29,7 @@ namespace Server.Pages.FileManager.Step04
 
 			if (string.IsNullOrWhiteSpace(directoryName))
 			{
-				AddErrorToast
+				AddToastError
 					(message: "You did not specify directory name!");
 
 				return;

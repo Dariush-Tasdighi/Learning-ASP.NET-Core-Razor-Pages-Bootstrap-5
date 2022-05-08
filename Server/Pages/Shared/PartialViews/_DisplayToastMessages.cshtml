@@ -2,59 +2,79 @@
 	int delayStep = 1000;
 	int delay = 4000 - delayStep;
 
-	var messages =
-	TempData[key: Infrastructure.Messages.KeyName] as Infrastructure.Messages;
+	var toastErrors =
+		TempData[key: Infrastructure.BasePageModel.MessageType.ToastError.ToString()] as
+		System.Collections.Generic.List<string>;
 
-	if (messages == null || messages.HasAnyToastMessages == false)
+	var toastWarnings =
+		TempData[key: Infrastructure.BasePageModel.MessageType.ToastWarning.ToString()] as
+		System.Collections.Generic.List<string>;
+
+	var toastSuccesses =
+		TempData[key: Infrastructure.BasePageModel.MessageType.ToastSuccess.ToString()] as
+		System.Collections.Generic.List<string>;
+
+	if ((toastErrors == null || toastErrors.Count == 0) &&
+		(toastWarnings == null || toastWarnings.Count == 0) &&
+		(toastSuccesses == null || toastSuccesses.Count == 0))
 	{
 		return;
 	}
 }
 
 <div aria-live="polite" aria-atomic="true" class="posiiton-relative">
-	<div class="toast-container position-absolute top-0 end-0 p-3 opacity-50" style="z-index: 10000;">
+	<div class="toast-container position-absolute top-25 end-0 p-3 opacity-50" style="z-index: 10000;">
 
 		@{
-			foreach (var message in messages.ToastErrors)
+			if (toastErrors != null)
 			{
-				delay += delayStep;
+				foreach (var message in toastErrors)
+				{
+					delay += delayStep;
 
-				<div class="toast bg-danger text-white align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
-					<div class="d-flex">
-						<div class="toast-body">
-							@(message)
+					<div class="toast bg-danger text-white align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
+						<div class="d-flex">
+							<div class="toast-body">
+								@(message)
+							</div>
+							<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 						</div>
-						<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 					</div>
-				</div>
+				}
 			}
 
-			foreach (var message in messages.ToastWarnings)
+			if (toastWarnings != null)
 			{
-				delay += delayStep;
+				foreach (var message in toastWarnings)
+				{
+					delay += delayStep;
 
-				<div class="toast bg-warning text-black align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
-					<div class="d-flex">
-						<div class="toast-body">
-							@(message)
+					<div class="toast bg-warning text-black align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
+						<div class="d-flex">
+							<div class="toast-body">
+								@(message)
+							</div>
+							<button type="button" class="btn-close btn-close-black me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 						</div>
-						<button type="button" class="btn-close btn-close-black me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 					</div>
-				</div>
+				}
 			}
 
-			foreach (var message in messages.ToastSuccesses)
+			if (toastSuccesses != null)
 			{
-				delay += delayStep;
+				foreach (var message in toastSuccesses)
+				{
+					delay += delayStep;
 
-				<div class="toast bg-success text-white align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
-					<div class="d-flex">
-						<div class="toast-body">
-							@(message)
+					<div class="toast bg-success text-white align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="@(delay)" data-bs-animation="true" data-bs-autohide="true">
+						<div class="d-flex">
+							<div class="toast-body">
+								@(message)
+							</div>
+							<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 						</div>
-						<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 					</div>
-				</div>
+				}
 			}
 		}
 

@@ -1,15 +1,23 @@
-﻿namespace Infrastructure
+﻿using System.Linq;
+
+namespace Infrastructure
 {
+	/// <summary>
+	/// Version 2.0
+	/// </summary>
 	public abstract class BasePageModel :
 		Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 	{
-		public static readonly string ErrorToastsKeyName = "ErrorToasts";
-		public static readonly string WarningToastsKeyName = "WarningToasts";
-		public static readonly string SuccessToastsKeyName = "SuccessToasts";
+		public enum MessageType : byte
+		{
+			PageError,
+			PageWarning,
+			PageSuccess,
 
-		public static readonly string ErrorMessagesKeyName = "ErrorMessages";
-		public static readonly string WarningMessagesKeyName = "WarningMessages";
-		public static readonly string SuccessMessagesKeyName = "SuccessMessages";
+			ToastError,
+			ToastWarning,
+			ToastSuccess,
+		}
 
 		public BasePageModel() : base()
 		{
@@ -34,7 +42,7 @@
 			return text;
 		}
 
-		public bool AddErrorMessage(string? message)
+		private bool AddMessage(string key, string? message)
 		{
 			message =
 				FixText(text: message);
@@ -44,214 +52,84 @@
 				return false;
 			}
 
-			//var list =
-			//	ViewData["ErrorMessages"] as
-			//	System.Collections.Generic.IList<string>;
+			// **************************************************
+			// به دلایل خیلی زیادی، کد ذیل به صورتی که ملاحظه می‌کنید
+			// نوشته شده است، لذا در آن هیچ‌گونه تغییری اعمال نکنید
+			// **************************************************
+			System.Collections.Generic.List<string>? list;
 
-			//var list =
-			//	ViewData[index: ErrorMessagesKeyName] as
-			//	System.Collections.Generic.IList<string>;
+			var tempDataItems =
+				(TempData[key: key] as
+				System.Collections.Generic.IList<string>);
 
-			var list =
-				TempData[key: ErrorMessagesKeyName] as
-				System.Collections.Generic.IList<string>;
-
-			if (list == null)
+			if (tempDataItems == null)
+			{
+				list = new System.Collections.Generic.List<string>();
+			}
+			else
 			{
 				list =
-					new System.Collections.Generic.List<string>();
+					tempDataItems as
+					System.Collections.Generic.List<string>;
 
-				//ViewData[index: ErrorMessagesKeyName] = list;
-
-				TempData[key: ErrorMessagesKeyName] = list;
-			}
-
-			if (list.Contains(item: message))
-			{
-				return false;
-			}
-
-			list.Add(item: message);
-
-			return true;
-		}
-
-		public bool AddWarningMessage(string? message)
-		{
-			message =
-				FixText(text: message);
-
-			if (message == null)
-			{
-				return false;
-			}
-
-			var list =
-				TempData[key: WarningMessagesKeyName] as
-				System.Collections.Generic.IList<string>;
-
-			if (list == null)
-			{
-				list =
-					new System.Collections.Generic.List<string>();
-
-				TempData[key: WarningMessagesKeyName] = list;
-			}
-
-			if (list.Contains(item: message))
-			{
-				return false;
-			}
-
-			list.Add(item: message);
-
-			return true;
-		}
-
-		public bool AddSuccessMessage(string? message)
-		{
-			message =
-				FixText(text: message);
-
-			if (message == null)
-			{
-				return false;
-			}
-
-			var list =
-				TempData[key: SuccessMessagesKeyName] as
-				System.Collections.Generic.IList<string>;
-
-			if (list == null)
-			{
-				list =
-					new System.Collections.Generic.List<string>();
-
-				TempData[key: SuccessMessagesKeyName] = list;
-			}
-
-			if (list.Contains(item: message))
-			{
-				return false;
-			}
-
-			list.Add(item: message);
-
-			return true;
-		}
-
-		public bool AddErrorToast(string? message)
-		{
-			message =
-				FixText(text: message);
-
-			if (message == null)
-			{
-				return false;
-			}
-
-			var list =
-				TempData[key: ErrorToastsKeyName] as
-				System.Collections.Generic.IList<string>;
-
-			if (list == null)
-			{
-				list =
-					new System.Collections.Generic.List<string>();
-
-				TempData[key: ErrorToastsKeyName] = list;
-			}
-
-			if (list.Contains(item: message))
-			{
-				return false;
-			}
-
-			list.Add(item: message);
-
-			return true;
-		}
-
-		public bool AddWarningToast(string? message)
-		{
-			message =
-				FixText(text: message);
-
-			if (message == null)
-			{
-				return false;
-			}
-
-			var list =
-				TempData[key: WarningToastsKeyName] as
-				System.Collections.Generic.IList<string>;
-
-			if (list == null)
-			{
-				list =
-					new System.Collections.Generic.List<string>();
-
-				TempData[key: WarningToastsKeyName] = list;
-			}
-
-			if (list.Contains(item: message))
-			{
-				return false;
-			}
-
-			list.Add(item: message);
-
-			return true;
-		}
-
-		public bool AddSuccessToast(string? message)
-		{
-			message =
-				FixText(text: message);
-
-			if (message == null)
-			{
-				return false;
-			}
-
-			var list =
-				TempData[key: SuccessToastsKeyName] as
-				System.Collections.Generic.IList<string>;
-
-			if (list == null)
-			{
-				list =
-					new System.Collections.Generic.List<string>();
-
-				TempData[key: SuccessToastsKeyName] = list;
-			}
-
-			if (list.Contains(item: message))
-			{
-				return false;
-			}
-
-			list.Add(item: message);
-
-			return true;
-		}
-
-		public Messages Messages
-		{
-			get
-			{
-				var messages =
-					TempData[key: Messages.KeyName] as Messages;
-
-				if (messages == null)
+				if (list == null)
 				{
-					messages = new();
-
-					TempData[key: Messages.KeyName] = messages;
+					list = tempDataItems.ToList();
 				}
-
-				return messages;
 			}
+
+			TempData[key: key] = list;
+			// **************************************************
+
+			if (list.Contains(item: message))
+			{
+				return false;
+			}
+
+			list.Add(item: message);
+
+			return true;
+		}
+
+		public bool AddMessage(MessageType type, string? message)
+		{
+			return AddMessage(key: type.ToString(), message: message);
+		}
+
+		public bool AddPageError(string? message)
+		{
+			return AddMessage
+				(key: MessageType.PageError.ToString(), message: message);
+		}
+
+		public bool AddPageWarning(string? message)
+		{
+			return AddMessage
+				(key: MessageType.PageWarning.ToString(), message: message);
+		}
+
+		public bool AddPageSuccess(string? message)
+		{
+			return AddMessage
+				(key: MessageType.PageSuccess.ToString(), message: message);
+		}
+
+		public bool AddToastError(string? message)
+		{
+			return AddMessage
+				(key: MessageType.ToastError.ToString(), message: message);
+		}
+
+		public bool AddToastWarning(string? message)
+		{
+			return AddMessage
+				(key: MessageType.ToastWarning.ToString(), message: message);
+		}
+
+		public bool AddToastSuccess(string? message)
+		{
+			return AddMessage
+				(key: MessageType.ToastSuccess.ToString(), message: message);
 		}
 	}
 }

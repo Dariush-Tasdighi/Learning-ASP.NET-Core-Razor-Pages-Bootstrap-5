@@ -24,42 +24,42 @@ namespace Server.Pages.FileManager.Step03
 			}
 
 			// **************************************************
-			AddErrorToast(message: null);
-			AddErrorToast(message: string.Empty);
-			AddErrorToast(message: "               ");
+			AddToastError(message: null);
+			AddToastError(message: string.Empty);
+			AddToastError(message: "               ");
 
-			AddErrorToast(message: "     Error     Toast     (1)     ");
+			AddToastError(message: "     Error     Toast     (1)     ");
 
-			AddErrorToast(message: "Error Toast (2)");
-			AddErrorToast(message: "Error Toast (3)");
+			AddToastError(message: "Error Toast (2)");
+			AddToastError(message: "Error Toast (3)");
 
-			AddErrorToast(message: "Error Toast (3)");
+			AddToastError(message: "Error Toast (3)");
 			// **************************************************
 
 			// **************************************************
-			AddWarningToast(message: null);
-			AddWarningToast(message: string.Empty);
-			AddWarningToast(message: "               ");
+			AddToastWarning(message: null);
+			AddToastWarning(message: string.Empty);
+			AddToastWarning(message: "               ");
 
-			AddWarningToast(message: "     Warning     Toast     (1)     ");
+			AddToastWarning(message: "     Warning     Toast     (1)     ");
 
-			AddWarningToast(message: "Warning Toast (2)");
-			AddWarningToast(message: "Warning Toast (3)");
+			AddToastWarning(message: "Warning Toast (2)");
+			AddToastWarning(message: "Warning Toast (3)");
 
-			AddWarningToast(message: "Warning Toast (3)");
+			AddToastWarning(message: "Warning Toast (3)");
 			// **************************************************
 
 			// **************************************************
-			AddSuccessToast(message: null);
-			AddSuccessToast(message: string.Empty);
-			AddSuccessToast(message: "               ");
+			AddToastSuccess(message: null);
+			AddToastSuccess(message: string.Empty);
+			AddToastSuccess(message: "               ");
 
-			AddSuccessToast(message: "     Success     Toast     (1)     ");
+			AddToastSuccess(message: "     Success     Toast     (1)     ");
 
-			AddSuccessToast(message: "Success Toast (2)");
-			AddSuccessToast(message: "Success Toast (3)");
+			AddToastSuccess(message: "Success Toast (2)");
+			AddToastSuccess(message: "Success Toast (3)");
 
-			AddSuccessToast(message: "Success Toast (3)");
+			AddToastSuccess(message: "Success Toast (3)");
 			// **************************************************
 
 			return;

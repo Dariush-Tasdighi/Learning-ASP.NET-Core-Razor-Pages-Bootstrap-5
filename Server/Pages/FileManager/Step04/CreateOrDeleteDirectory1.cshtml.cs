@@ -23,7 +23,7 @@ namespace Server.Pages.FileManager.Step04
 				return;
 			}
 
-			AddSuccessToast
+			AddToastSuccess
 				(message: "The directory has been created successfully.");
 		}
 
@@ -36,7 +36,7 @@ namespace Server.Pages.FileManager.Step04
 				return;
 			}
 
-			AddSuccessToast
+			AddToastSuccess
 				(message: "The directory has been deleted successfully.");
 		}
 	}

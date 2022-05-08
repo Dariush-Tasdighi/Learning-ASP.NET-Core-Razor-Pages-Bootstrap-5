@@ -23,7 +23,7 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage =
 						"You did not specify any file for uploading!";
 
-					AddErrorToast
+					AddToastError
 						(message: errorMessage);
 
 					return;
@@ -37,7 +37,7 @@ namespace Server.Pages.FileManager.Step05
 			}
 			catch (System.Exception ex)
 			{
-				AddErrorToast
+				AddToastError
 					(message: ex.Message);
 			}
 		}
@@ -69,7 +69,7 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage = string.Format
 						("File '{0}' already exists!", fileName);
 
-					AddErrorToast
+					AddToastError
 						(message: errorMessage);
 
 					return false;
@@ -90,7 +90,7 @@ namespace Server.Pages.FileManager.Step05
 				var successMessage = string.Format
 					("File '{0}' uploaded successfully.", fileName);
 
-				AddSuccessToast
+				AddToastSuccess
 					(message: successMessage);
 			}
 			else
@@ -99,7 +99,7 @@ namespace Server.Pages.FileManager.Step05
 					("File '{0}' with the name of '{1}' uploaded successfully.",
 					file.FileName, fileName);
 
-				AddSuccessToast
+				AddToastSuccess
 					(message: successMessage);
 			}
 
@@ -114,7 +114,7 @@ namespace Server.Pages.FileManager.Step05
 				var errorMessage =
 					"You did not specify any file for uploading!";
 
-				AddErrorToast
+				AddToastError
 					(message: errorMessage);
 
 				return false;
@@ -125,7 +125,7 @@ namespace Server.Pages.FileManager.Step05
 				var errorMessage = string.Format
 					("File '{0}' did not uploaded successfully!", file.FileName);
 
-				AddErrorToast
+				AddToastError
 					(message: errorMessage);
 
 				return false;
@@ -140,7 +140,7 @@ namespace Server.Pages.FileManager.Step05
 				var errorMessage = string.Format
 					("File '{0}' does not have any extension!", file.FileName);
 
-				AddErrorToast
+				AddToastError
 					(message: errorMessage);
 
 				return false;
@@ -154,7 +154,7 @@ namespace Server.Pages.FileManager.Step05
 				var errorMessage = string.Format
 					("Site does not support your file '{0}' extension!", file.FileName);
 
-				AddErrorToast
+				AddToastError
 					(message: errorMessage);
 
 				return false;

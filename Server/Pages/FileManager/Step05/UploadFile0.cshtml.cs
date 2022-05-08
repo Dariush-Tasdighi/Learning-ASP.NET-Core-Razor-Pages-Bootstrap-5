@@ -24,7 +24,7 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage =
 						"You did not specify any file for uploading!";
 
-					AddErrorToast
+					AddToastError
 						(message: errorMessage);
 
 					return;
@@ -40,7 +40,7 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage = string.Format
 						("File '{0}' did not uploaded successfully!", fileName);
 
-					AddErrorToast
+					AddToastError
 						(message: errorMessage);
 
 					return;
@@ -74,7 +74,7 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage = string.Format
 						("File '{0}' should have extension!", fileName);
 
-					AddErrorToast
+					AddToastError
 						(message: errorMessage);
 
 					return;
@@ -107,7 +107,7 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage = string.Format
 						("The extension of file '{0}' does not support!", fileName);
 
-					AddErrorToast
+					AddToastError
 						(message: errorMessage);
 
 					return;
@@ -121,7 +121,7 @@ namespace Server.Pages.FileManager.Step05
 					var errorMessage = string.Format
 						("File '{0}' already exists!", fileName);
 
-					AddErrorToast
+					AddToastError
 						(message: errorMessage);
 
 					return;
@@ -139,12 +139,12 @@ namespace Server.Pages.FileManager.Step05
 				var successMessage = string.Format
 					("File '{0}' uploaded successfully.", fileName);
 
-				AddSuccessToast
+				AddToastSuccess
 					(message: successMessage);
 			}
 			catch (System.Exception ex)
 			{
-				AddErrorToast(message: ex.Message);
+				AddToastError(message: ex.Message);
 			}
 		}
 	}

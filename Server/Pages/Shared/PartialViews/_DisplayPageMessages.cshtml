@@ -1,17 +1,21 @@
 ﻿@{
-	var messages =
-	TempData[key: Infrastructure.Messages.KeyName] as Infrastructure.Messages;
+	var pageErrors =
+		TempData[key: Infrastructure.BasePageModel.MessageType.PageError.ToString()] as
+		System.Collections.Generic.List<string>;
 
-	if (messages == null || messages.HasAnyPageMessages == false)
-	{
-		return;
-	}
+	var pageWarnings =
+		TempData[key: Infrastructure.BasePageModel.MessageType.PageWarning.ToString()] as
+		System.Collections.Generic.List<string>;
 
-	if (messages.PageErrors.Count != 0)
+	var pageSuccesses =
+		TempData[key: Infrastructure.BasePageModel.MessageType.PageSuccess.ToString()] as
+		System.Collections.Generic.List<string>;
+
+	if (pageErrors != null && pageErrors.Count != 0)
 	{
-		<div class="alert alert-danger pb-0" role="alert">
-			<ul>
-				@foreach (var message in messages.PageErrors)
+		<div class="alert alert-danger" role="alert">
+			<ul class="mb-0">
+				@foreach (var message in pageErrors)
 				{
 					<li>@(message)</li>
 				}
@@ -19,11 +23,11 @@
 		</div>
 	}
 
-	if (messages.PageWarnings.Count != 0)
+	if (pageWarnings != null && pageWarnings.Count != 0)
 	{
-		<div class="alert alert-warning pb-0" role="alert">
-			<ul>
-				@foreach (var message in messages.PageWarnings)
+		<div class="alert alert-warning" role="alert">
+			<ul class="mb-0">
+				@foreach (var message in pageWarnings)
 				{
 					<li>@(message)</li>
 				}
@@ -31,11 +35,11 @@
 		</div>
 	}
 
-	if (messages.PageSuccesses.Count != 0)
+	if (pageSuccesses != null && pageSuccesses.Count != 0)
 	{
-		<div class="alert alert-success pb-0" role="alert">
-			<ul>
-				@foreach (var message in messages.PageSuccesses)
+		<div class="alert alert-success" role="alert">
+			<ul class="mb-0">
+				@foreach (var message in pageSuccesses)
 				{
 					<li>@(message)</li>
 				}
