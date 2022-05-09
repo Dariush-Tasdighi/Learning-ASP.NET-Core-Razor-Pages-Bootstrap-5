@@ -2,17 +2,19 @@
 	int delayStep = 1000;
 	int delay = 4000 - delayStep;
 
+	// نکته مهم
+	// در همه شرایط کار نمی‌کند List استفاده از کلاس
 	var toastErrors =
-		TempData[key: Infrastructure.BasePageModel.MessageType.ToastError.ToString()] as
-		System.Collections.Generic.List<string>;
+		TempData[key: Infrastructure.Messages.MessageType.ToastError.ToString()] as
+		System.Collections.Generic.IList<string>;
 
 	var toastWarnings =
-		TempData[key: Infrastructure.BasePageModel.MessageType.ToastWarning.ToString()] as
-		System.Collections.Generic.List<string>;
+		TempData[key: Infrastructure.Messages.MessageType.ToastWarning.ToString()] as
+		System.Collections.Generic.IList<string>;
 
 	var toastSuccesses =
-		TempData[key: Infrastructure.BasePageModel.MessageType.ToastSuccess.ToString()] as
-		System.Collections.Generic.List<string>;
+		TempData[key: Infrastructure.Messages.MessageType.ToastSuccess.ToString()] as
+		System.Collections.Generic.IList<string>;
 
 	if ((toastErrors == null || toastErrors.Count == 0) &&
 		(toastWarnings == null || toastWarnings.Count == 0) &&

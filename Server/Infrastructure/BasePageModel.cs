@@ -1,135 +1,55 @@
-﻿using System.Linq;
-
-namespace Infrastructure
+﻿namespace Infrastructure
 {
 	/// <summary>
-	/// Version 2.0
+	/// Version 3.0
 	/// </summary>
 	public abstract class BasePageModel :
-		Microsoft.AspNetCore.Mvc.RazorPages.PageModel
+		Microsoft.AspNetCore.Mvc.RazorPages.PageModel, Messages.IMessageHandler
 	{
-		public enum MessageType : byte
-		{
-			PageError,
-			PageWarning,
-			PageSuccess,
-
-			ToastError,
-			ToastWarning,
-			ToastSuccess,
-		}
-
 		public BasePageModel() : base()
 		{
-		}
-
-		public string? FixText(string? text)
-		{
-			if (string.IsNullOrWhiteSpace(text))
-			{
-				return null;
-			}
-
-			text =
-				text.Trim();
-
-			while (text.Contains("  "))
-			{
-				text =
-					text.Replace("  ", " ");
-			}
-
-			return text;
-		}
-
-		private bool AddMessage(string key, string? message)
-		{
-			message =
-				FixText(text: message);
-
-			if (message == null)
-			{
-				return false;
-			}
-
-			// **************************************************
-			// به دلایل خیلی زیادی، کد ذیل به صورتی که ملاحظه می‌کنید
-			// نوشته شده است، لذا در آن هیچ‌گونه تغییری اعمال نکنید
-			// **************************************************
-			System.Collections.Generic.List<string>? list;
-
-			var tempDataItems =
-				(TempData[key: key] as
-				System.Collections.Generic.IList<string>);
-
-			if (tempDataItems == null)
-			{
-				list = new System.Collections.Generic.List<string>();
-			}
-			else
-			{
-				list =
-					tempDataItems as
-					System.Collections.Generic.List<string>;
-
-				if (list == null)
-				{
-					list = tempDataItems.ToList();
-				}
-			}
-
-			TempData[key: key] = list;
-			// **************************************************
-
-			if (list.Contains(item: message))
-			{
-				return false;
-			}
-
-			list.Add(item: message);
-
-			return true;
-		}
-
-		public bool AddMessage(MessageType type, string? message)
-		{
-			return AddMessage(key: type.ToString(), message: message);
 		}
 
 		public bool AddPageError(string? message)
 		{
 			return AddMessage
-				(key: MessageType.PageError.ToString(), message: message);
+				(type: Messages.MessageType.PageError, message: message);
 		}
 
 		public bool AddPageWarning(string? message)
 		{
 			return AddMessage
-				(key: MessageType.PageWarning.ToString(), message: message);
+				(type: Messages.MessageType.PageWarning, message: message);
 		}
 
 		public bool AddPageSuccess(string? message)
 		{
 			return AddMessage
-				(key: MessageType.PageSuccess.ToString(), message: message);
+				(type: Messages.MessageType.PageSuccess, message: message);
 		}
 
 		public bool AddToastError(string? message)
 		{
 			return AddMessage
-				(key: MessageType.ToastError.ToString(), message: message);
+				(type: Messages.MessageType.ToastError, message: message);
 		}
 
 		public bool AddToastWarning(string? message)
 		{
 			return AddMessage
-				(key: MessageType.ToastWarning.ToString(), message: message);
+				(type: Messages.MessageType.ToastWarning, message: message);
 		}
 
 		public bool AddToastSuccess(string? message)
 		{
 			return AddMessage
-				(key: MessageType.ToastSuccess.ToString(), message: message);
+				(type: Messages.MessageType.ToastSuccess, message: message);
+		}
+
+		public bool AddMessage(Messages.MessageType type, string? message)
+		{
+			return Messages.Utility.AddMessage
+				(tempData: TempData, type: type, message: message);
 		}
 	}
 }

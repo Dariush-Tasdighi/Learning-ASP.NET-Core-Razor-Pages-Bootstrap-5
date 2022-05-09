@@ -1,14 +1,14 @@
 ﻿@{
 	var pageErrors =
-		TempData[key: Infrastructure.BasePageModel.MessageType.PageError.ToString()] as
+		TempData[key: Infrastructure.Messages.MessageType.PageError.ToString()] as
 		System.Collections.Generic.List<string>;
 
 	var pageWarnings =
-		TempData[key: Infrastructure.BasePageModel.MessageType.PageWarning.ToString()] as
+		TempData[key: Infrastructure.Messages.MessageType.PageWarning.ToString()] as
 		System.Collections.Generic.List<string>;
 
 	var pageSuccesses =
-		TempData[key: Infrastructure.BasePageModel.MessageType.PageSuccess.ToString()] as
+		TempData[key: Infrastructure.Messages.MessageType.PageSuccess.ToString()] as
 		System.Collections.Generic.List<string>;
 
 	if ((pageErrors == null || pageErrors.Count == 0) &&
