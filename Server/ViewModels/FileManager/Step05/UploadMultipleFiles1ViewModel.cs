@@ -8,7 +8,7 @@
 
 		// **********
 		[System.ComponentModel
-			.DataAnnotations.Display(Name = "Override If File Exists")]
+			.DataAnnotations.Display(Name = "Overwrite If File Exists")]
 		public bool OverwriteIfFileExists { get; set; }
 		// **********
 
@@ -19,7 +19,9 @@
 		[System.ComponentModel.DataAnnotations.Required
 			(AllowEmptyStrings = false,
 			ErrorMessage = "You did not specify any files!")]
-		public System.Collections.Generic.IList<Microsoft.AspNetCore.Http.IFormFile>? Files { get; set; }
+		public System.Collections.Generic.IList
+			<Microsoft.AspNetCore.Http.IFormFile>? Files
+		{ get; set; }
 		// **********
 	}
 }

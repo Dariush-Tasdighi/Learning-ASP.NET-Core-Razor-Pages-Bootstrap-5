@@ -21,6 +21,7 @@ namespace Server.Pages.FileManager.Step05
 
 		public void OnGet()
 		{
+			ViewModel.OverwriteIfFileExists = true;
 		}
 
 		public async System.Threading.Tasks.Task OnPostAsync()
