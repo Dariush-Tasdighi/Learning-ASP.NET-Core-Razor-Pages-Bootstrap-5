@@ -46,8 +46,8 @@
 		// **********
 
 		// **********
-		[System.ComponentModel
-			.DataAnnotations.Display(Name = "Confirm Password")]
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Confirm Password")]
 
 		[System.ComponentModel.DataAnnotations.Required
 			(AllowEmptyStrings = false,
@@ -63,8 +63,8 @@
 		// **********
 
 		// **********
-		[System.ComponentModel
-			.DataAnnotations.Display(Name = "Email Address")]
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Email Address")]
 
 		[System.ComponentModel.DataAnnotations.Required
 			(AllowEmptyStrings = false,

@@ -46,8 +46,8 @@
 		// **********
 
 		// **********
-		[System.ComponentModel
-			.DataAnnotations.Display(Name = "Remember Me")]
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Remember Me")]
 		public bool RememberMe { get; set; }
 		// **********
 	}
