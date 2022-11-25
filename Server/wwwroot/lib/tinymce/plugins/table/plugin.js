@@ -1,5 +1,5 @@
 /**
- * TinyMCE version 6.0.3 (2022-05-25)
+ * TinyMCE version 6.3.0 (2022-11-23)
  */
 
 (function () {
@@ -59,6 +59,9 @@
         return fn.apply(null, all);
       };
     }
+    const call = f => {
+      f();
+    };
     const never = constant(false);
     const always = constant(true);
 
@@ -169,11 +172,9 @@
       r[i] = x;
     };
     const internalFilter = (obj, pred, onTrue, onFalse) => {
-      const r = {};
       each$1(obj, (x, i) => {
         (pred(x, i) ? onTrue : onFalse)(x, i);
       });
-      return r;
     };
     const filter$1 = (obj, pred) => {
       const t = {};
@@ -578,6 +579,10 @@
     const trim = blank(/^\s+|\s+$/g);
     const isNotEmpty = s => s.length > 0;
     const isEmpty = s => !isNotEmpty(s);
+    const toInt = (value, radix = 10) => {
+      const num = parseInt(value, radix);
+      return isNaN(num) ? Optional.none() : Optional.some(num);
+    };
     const toFloat = value => {
       const num = parseFloat(value);
       return isNaN(num) ? Optional.none() : Optional.some(num);
@@ -852,19 +857,16 @@
     const getTDTHOverallStyle = (dom, elm, name) => {
       const cells = dom.select('td,th', elm);
       let firstChildStyle;
-      const checkChildren = (firstChildStyle, elms) => {
-        for (let i = 0; i < elms.length; i++) {
-          const currentStyle = dom.getStyle(elms[i], name);
-          if (typeof firstChildStyle === 'undefined') {
-            firstChildStyle = currentStyle;
-          }
-          if (firstChildStyle !== currentStyle) {
-            return '';
-          }
+      for (let i = 0; i < cells.length; i++) {
+        const currentStyle = dom.getStyle(cells[i], name);
+        if (isUndefined(firstChildStyle)) {
+          firstChildStyle = currentStyle;
         }
-        return firstChildStyle;
-      };
-      return checkChildren(firstChildStyle, cells);
+        if (firstChildStyle !== currentStyle) {
+          return '';
+        }
+      }
+      return firstChildStyle;
     };
     const setAlign = (editor, elm, name) => {
       global$2.each('left center right'.split(' '), align => {
@@ -939,20 +941,41 @@
         value: type.toLowerCase()
       };
     });
-    const determineDefaultStyles = (editor, defaultStyles) => {
+    const defaultWidth = '100%';
+    const getPixelForcedWidth = editor => {
       var _a;
-      if (isPixelsForced(editor)) {
-        const dom = editor.dom;
-        const parentBlock = (_a = dom.getParent(editor.selection.getStart(), dom.isBlock)) !== null && _a !== void 0 ? _a : editor.getBody();
-        const contentWidth = getInner(SugarElement.fromDom(parentBlock));
+      const dom = editor.dom;
+      const parentBlock = (_a = dom.getParent(editor.selection.getStart(), dom.isBlock)) !== null && _a !== void 0 ? _a : editor.getBody();
+      return getInner(SugarElement.fromDom(parentBlock)) + 'px';
+    };
+    const determineDefaultStyles = (editor, defaultStyles) => {
+      if (isResponsiveForced(editor) || !shouldStyleWithCss(editor)) {
+        return defaultStyles;
+      } else if (isPixelsForced(editor)) {
         return {
           ...defaultStyles,
-          width: contentWidth + 'px'
+          width: getPixelForcedWidth(editor)
         };
-      } else if (isResponsiveForced(editor)) {
-        return filter$1(defaultStyles, (_value, key) => key !== 'width');
       } else {
-        return defaultStyles;
+        return {
+          ...defaultStyles,
+          width: defaultWidth
+        };
+      }
+    };
+    const determineDefaultAttributes = (editor, defaultAttributes) => {
+      if (isResponsiveForced(editor) || shouldStyleWithCss(editor)) {
+        return defaultAttributes;
+      } else if (isPixelsForced(editor)) {
+        return {
+          ...defaultAttributes,
+          width: getPixelForcedWidth(editor)
+        };
+      } else {
+        return {
+          ...defaultAttributes,
+          width: defaultWidth
+        };
       }
     };
     const option = name => editor => editor.options.get(name);
@@ -986,10 +1009,6 @@
         processor: 'boolean',
         default: !global$1.deviceType.isTouch()
       });
-      registerOption('table_style_by_css', {
-        processor: 'boolean',
-        default: true
-      });
       registerOption('table_cell_class_list', {
         processor: 'object[]',
         default: []
@@ -1018,7 +1037,6 @@
     const getTableSizingMode = option('table_sizing_mode');
     const getTableBorderWidths = option('table_border_widths');
     const getTableBorderStyles = option('table_border_styles');
-    const getDefaultAttributes = option('table_default_attributes');
     const hasAdvancedCellTab = option('table_cell_advtab');
     const hasAdvancedRowTab = option('table_row_advtab');
     const hasAdvancedTableTab = option('table_advtab');
@@ -1037,6 +1055,11 @@
       const options = editor.options;
       const defaultStyles = options.get('table_default_styles');
       return options.isSet('table_default_styles') ? defaultStyles : determineDefaultStyles(editor, defaultStyles);
+    };
+    const getDefaultAttributes = editor => {
+      const options = editor.options;
+      const defaultAttributes = options.get('table_default_attributes');
+      return options.isSet('table_default_attributes') ? defaultAttributes : determineDefaultAttributes(editor, defaultAttributes);
     };
 
     const getNodeName = elm => elm.nodeName.toLowerCase();
@@ -1562,7 +1585,7 @@
     };
     const isListGroup = item => hasNonNullableKey(item, 'menu');
     const buildListItems = items => map(items, item => {
-      const text = item.text || item.title;
+      const text = item.text || item.title || '';
       if (isListGroup(item)) {
         return {
           text,
@@ -2067,7 +2090,7 @@
         if (shouldStyleWithCss(editor) && optBorderWidth.isSome()) {
           return optBorderWidth.getOr('');
         }
-        return dom.getAttrib(elm, 'border') || getTDTHOverallStyle(editor.dom, elm, 'border-width') || getTDTHOverallStyle(editor.dom, elm, 'border');
+        return dom.getAttrib(elm, 'border') || getTDTHOverallStyle(editor.dom, elm, 'border-width') || getTDTHOverallStyle(editor.dom, elm, 'border') || '';
       };
       const dom = editor.dom;
       const cellspacing = shouldStyleWithCss(editor) ? dom.getStyle(elm, 'border-spacing') || dom.getAttrib(elm, 'cellspacing') : dom.getAttrib(elm, 'cellspacing') || dom.getStyle(elm, 'border-spacing');
@@ -2075,8 +2098,8 @@
       return {
         width: dom.getStyle(elm, 'width') || dom.getAttrib(elm, 'width'),
         height: dom.getStyle(elm, 'height') || dom.getAttrib(elm, 'height'),
-        cellspacing,
-        cellpadding,
+        cellspacing: cellspacing !== null && cellspacing !== void 0 ? cellspacing : '',
+        cellpadding: cellpadding !== null && cellpadding !== void 0 ? cellpadding : '',
         border: getBorder(dom, elm),
         caption: !!dom.select('caption', elm)[0],
         class: dom.getAttrib(elm, 'class', ''),
@@ -2515,7 +2538,7 @@
 
     const styleTDTH = (dom, elm, name, value) => {
       if (elm.tagName === 'TD' || elm.tagName === 'TH') {
-        if (isString(name)) {
+        if (isString(name) && isNonNullable(value)) {
           dom.setStyle(elm, name, value);
         } else {
           dom.setStyles(elm, name);
@@ -2532,12 +2555,14 @@
       const dom = editor.dom;
       const attrs = {};
       const styles = {};
-      attrs.class = data.class;
+      if (!isUndefined(data.class)) {
+        attrs.class = data.class;
+      }
       styles.height = addPxSuffix(data.height);
-      if (dom.getAttrib(tableElm, 'width') && !shouldStyleWithCss(editor)) {
-        attrs.width = removePxSuffix(data.width);
-      } else {
+      if (shouldStyleWithCss(editor)) {
         styles.width = addPxSuffix(data.width);
+      } else if (dom.getAttrib(tableElm, 'width')) {
+        attrs.width = removePxSuffix(data.width);
       }
       if (shouldStyleWithCss(editor)) {
         styles['border-width'] = addPxSuffix(data.border);
@@ -2559,9 +2584,10 @@
         }
       }
       if (hasAdvancedTableTab(editor)) {
-        styles['background-color'] = data.backgroundcolor;
-        styles['border-color'] = data.bordercolor;
-        styles['border-style'] = data.borderstyle;
+        const advData = data;
+        styles['background-color'] = advData.backgroundcolor;
+        styles['border-color'] = advData.bordercolor;
+        styles['border-style'] = advData.borderstyle;
       }
       attrs.style = dom.serializeStyle({
         ...getDefaultStyles(editor),
@@ -2582,13 +2608,13 @@
       }
       editor.undoManager.transact(() => {
         if (!tableElm) {
-          const cols = parseInt(data.cols, 10) || 1;
-          const rows = parseInt(data.rows, 10) || 1;
+          const cols = toInt(data.cols).getOr(1);
+          const rows = toInt(data.rows).getOr(1);
           editor.execCommand('mceInsertTable', false, {
             rows,
             columns: cols
           });
-          tableElm = getSelectionCell(getSelectionStart(editor), getIsRoot(editor)).bind(cell => table(cell, getIsRoot(editor))).map(table => table.dom).getOrUndefined();
+          tableElm = getSelectionCell(getSelectionStart(editor), getIsRoot(editor)).bind(cell => table(cell, getIsRoot(editor))).map(table => table.dom).getOrDie();
         }
         if (size(modifiedData) > 0) {
           applyDataToElement(editor, tableElm, data);
@@ -2614,7 +2640,15 @@
       const dom = editor.dom;
       let tableElm;
       let data = extractDataFromSettings(editor, hasAdvancedTableTab(editor));
-      if (insertNewTable === false) {
+      if (insertNewTable) {
+        data.cols = '1';
+        data.rows = '1';
+        if (hasAdvancedTableTab(editor)) {
+          data.borderstyle = '';
+          data.bordercolor = '';
+          data.backgroundcolor = '';
+        }
+      } else {
         tableElm = dom.getParent(editor.selection.getStart(), 'table', editor.getBody());
         if (tableElm) {
           data = extractDataFromTableElement(editor, tableElm, hasAdvancedTableTab(editor));
@@ -2624,14 +2658,6 @@
             data.bordercolor = '';
             data.backgroundcolor = '';
           }
-        }
-      } else {
-        data.cols = '1';
-        data.rows = '1';
-        if (hasAdvancedTableTab(editor)) {
-          data.borderstyle = '';
-          data.bordercolor = '';
-          data.backgroundcolor = '';
         }
       }
       const classes = buildListItems(getTableClassList(editor));
@@ -2774,7 +2800,7 @@
       const resetTargets = () => {
         targets.set(cached(findTargets)());
         selectionDetails = targets.get().bind(getExtractedDetails);
-        each(changeHandlers.get(), handler => handler());
+        each(changeHandlers.get(), call);
       };
       const setupHandler = handler => {
         handler();
