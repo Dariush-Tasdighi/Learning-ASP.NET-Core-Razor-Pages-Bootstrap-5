@@ -17,7 +17,7 @@ namespace Server.Pages.FileManager.Step01
 				"/FileManager/Step01/Index";
 
 			PhysicalRootPath =
-				$"{HostEnvironment.ContentRootPath}wwwroot";
+				System.IO.Path.Combine(HostEnvironment.ContentRootPath, "wwwroot");
 
 			// بودن null برای خلاص شدن از شر اخطار
 			Files = new System.Collections.Generic.List<System.IO.FileInfo>();
