@@ -11,7 +11,7 @@
 			"destination": "wwwroot/lib/bootstrap-icons/"
 		},
 		{
-			"library": "jquery@3.6.1",
+			"library": "jquery@3.6.3",
 			"destination": "wwwroot/lib/jquery/"
 		},
 		{
@@ -23,7 +23,7 @@
 			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
 		},
 		{
-			"library": "tinymce@6.3.0",
+			"library": "tinymce@6.3.1",
 			"destination": "wwwroot/lib/tinymce/"
 		}
 	]
