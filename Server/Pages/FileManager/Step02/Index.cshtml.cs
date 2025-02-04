@@ -1,136 +1,100 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
+using Infrastructure;
+using System.Collections.Generic;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Server.Pages.FileManager.Step02
+namespace Server.Pages.FileManager.Step02;
+
+public class IndexModel : BasePageModel
 {
-	public class IndexModel : Infrastructure.BasePageModel
+	public IndexModel(IHostEnvironment hostEnvironment) : base()
 	{
-		#region Constructor
-		public IndexModel
-			(Microsoft.Extensions.Hosting.IHostEnvironment hostEnvironment) : base()
+		DisplayDateTimeFormat = "yyyy/MM/dd [HH:mm:ss]";
+		RootRelativePageAddress = "/FileManager/Step02/Index";
+		PhysicalRootPath = $@"{hostEnvironment.ContentRootPath}\wwwroot";
+
+		CurrentPath = "/";
+		PhysicalCurrentPath = PhysicalRootPath;
+	}
+
+	public string PhysicalRootPath { get; init; }
+	public string DisplayDateTimeFormat { get; init; }
+	public string RootRelativePageAddress { get; init; }
+
+	public string CurrentPath { get; set; }
+	public string PhysicalCurrentPath { get; set; }
+	public IList<FileInfo> Files { get; set; } = [];
+	public IList<DirectoryInfo> Directories { get; set; } = [];
+
+	public IActionResult OnGet(string? path = null)
+	{
+		var result = CheckPathAndSetCurrentPath(path: path);
+
+		SetDirectoriesAndFiles();
+
+		if (result == false)
 		{
-			HostEnvironment = hostEnvironment;
-
-			DisplayDateTimeFormat =
-				"yyyy/MM/dd [HH:mm:ss]";
-
-			PageAddress =
-				"/FileManager/Step02/Index";
-
-			PhysicalRootPath =
-				$"{HostEnvironment.ContentRootPath}wwwroot";
-
-			// بودن null برای خلاص شدن از شر اخطار
-			Files = new System.Collections.Generic.List<System.IO.FileInfo>();
-			Directories = new System.Collections.Generic.List<System.IO.DirectoryInfo>();
+			return LocalRedirect(localUrl: RootRelativePageAddress);
 		}
-		#endregion /Constructor
 
-		#region Public Read Only Property(ies)
-		public string PageAddress { get; }
+		return Page();
+	}
 
-		public string PhysicalRootPath { get; }
+	public bool CheckPathAndSetCurrentPath(string? path)
+	{
+		var fixedPath = "/";
 
-		public string DisplayDateTimeFormat { get; }
-
-		public Microsoft.Extensions.Hosting.IHostEnvironment HostEnvironment { get; }
-		#endregion /Public Read Only Property(ies)
-
-		#region Public Property(ies)
-		public string? CurrentPath { get; set; }
-
-		public string? PhysicalCurrentPath { get; set; }
-
-		public System.Collections.Generic.IList<System.IO.FileInfo> Files { get; set; }
-
-		public System.Collections.Generic.IList<System.IO.DirectoryInfo> Directories { get; set; }
-		#endregion /Public Property(ies)
-
-		#region OnGet
-		public void OnGet(string? path)
+		if (!string.IsNullOrWhiteSpace(value: path))
 		{
-			CheckPathAndSetCurrentPath(path: path);
+			fixedPath = path.Replace(oldValue: @"\", newValue: "/");
 
-			SetDirectoriesAndFiles();
-		}
-		#endregion /OnGet
-
-		#region CheckPathAndSetCurrentPath
-		public void CheckPathAndSetCurrentPath(string? path)
-		{
-			// **************************************************
-			string fixedPath = "/";
-
-			if (string.IsNullOrWhiteSpace(path) == false)
+			if (!fixedPath.StartsWith(value: "/"))
 			{
-				fixedPath =
-					path.Replace("\\", "/");
-
-				if (fixedPath.StartsWith("/") == false)
-				{
-					fixedPath =
-						$"/{fixedPath}";
-				}
-
-				if (fixedPath.EndsWith("/") == false)
-				{
-					fixedPath =
-						$"{fixedPath}/";
-				}
-
-				while (fixedPath.Contains("//"))
-				{
-					fixedPath =
-						fixedPath.Replace("//", "/");
-				}
-			}
-			// **************************************************
-
-			// **************************************************
-			CurrentPath = fixedPath;
-			// **************************************************
-
-			// **************************************************
-			PhysicalCurrentPath =
-				$"{PhysicalRootPath}{CurrentPath}"
-				.Replace("/", "\\");
-
-			if (System.IO.Directory.Exists(path: PhysicalCurrentPath) == false)
-			{
-				CurrentPath = "/";
-				PhysicalCurrentPath = PhysicalRootPath;
-			}
-			// **************************************************
-		}
-		#endregion /CheckPathAndSetCurrentPath
-
-		#region SetDirectoriesAndFiles
-		public void SetDirectoriesAndFiles()
-		{
-			if (string.IsNullOrWhiteSpace(PhysicalCurrentPath) ||
-				System.IO.Directory.Exists(PhysicalCurrentPath) == false)
-			{
-				Files = new System.Collections.Generic.List<System.IO.FileInfo>();
-				Directories = new System.Collections.Generic.List<System.IO.DirectoryInfo>();
-
-				return;
+				fixedPath = $"/{fixedPath}";
 			}
 
-			var directoryInfo =
-				new System.IO.DirectoryInfo(path: PhysicalCurrentPath);
+			if (!fixedPath.EndsWith(value: "/"))
+			{
+				fixedPath = $"{fixedPath}/";
+			}
 
-			Files =
-				directoryInfo.GetFiles()
-				.OrderBy(current => current.Extension)
-				.ThenBy(current => current.Name)
-				.ToList()
-				;
-
-			Directories =
-				directoryInfo.GetDirectories()
-				.OrderBy(current => current.Name)
-				.ToList()
-				;
+			while (fixedPath.Contains(value: "//"))
+			{
+				fixedPath = fixedPath.Replace(oldValue: "//", newValue: "/");
+			}
 		}
-		#endregion /SetDirectoriesAndFiles
+
+		CurrentPath = fixedPath;
+
+		PhysicalCurrentPath =
+			$"{PhysicalRootPath}{CurrentPath}"
+			.Replace(oldValue: "/", newValue: @"\");
+
+		if (Directory.Exists(path: PhysicalCurrentPath) == false)
+		{
+			CurrentPath = "/";
+			PhysicalCurrentPath = PhysicalRootPath;
+
+			return false;
+		}
+
+		return true;
+	}
+
+	public void SetDirectoriesAndFiles()
+	{
+		var directoryInfo =
+			new DirectoryInfo(path: PhysicalCurrentPath);
+
+		Files =
+			[.. directoryInfo.GetFiles()
+			.OrderBy(current => current.Extension)
+			.ThenBy(current => current.Name)];
+
+		Directories =
+			[.. directoryInfo.GetDirectories()
+			.OrderBy(current => current.Name)];
 	}
 }

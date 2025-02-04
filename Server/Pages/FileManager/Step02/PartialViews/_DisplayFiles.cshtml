@@ -1,6 +1,4 @@
-﻿@model Server.Pages.FileManager.Step02.IndexModel
-
-<div class="row">
+﻿<div class="row">
 	<div class="col table-responsive">
 		<table class="table table-bordered table-sm table-striped table-hover">
 			<caption>Files</caption>
@@ -15,7 +13,7 @@
 					</th>
 					<th scope="col">
 						Type
-					</th>
+					</th scope="col">
 					<th scope="col">
 						Length
 					</th>
@@ -58,19 +56,19 @@
 								@(item.Extension.ToLower())
 							</td>
 							<td>
-								@(item.Length.ToString("#,##0"))
+								@(item.Length.ToString(format: "#,##0"))
 							</td>
 							<td>
 								@(item.Attributes)
 							</td>
 							<td>
-								@(item.CreationTime.ToString(Model.DisplayDateTimeFormat))
+								@(item.CreationTime.ToString(format: Model.DisplayDateTimeFormat))
 							</td>
 							<td>
-								@(item.LastWriteTime.ToString(Model.DisplayDateTimeFormat))
+								@(item.LastWriteTime.ToString(format: Model.DisplayDateTimeFormat))
 							</td>
 							<td>
-								@(item.LastAccessTime.ToString(Model.DisplayDateTimeFormat))
+								@(item.LastAccessTime.ToString(format: Model.DisplayDateTimeFormat))
 							</td>
 						</tr>
 					}
@@ -79,13 +77,13 @@
 
 			<tfoot class="table-secondary">
 				<tr>
-					<th scope="col" colspan="10">
+					<th scope="col" colspan="8">
 						Total Length:
-						@(totalLength.ToString("#,##0")) Bytes
+						@(totalLength.ToString(format: "#,##0")) Bytes
 						|
-						@((((double)totalLength) / ((double)1024)).ToString("#,##0")) KBytes
+						@((totalLength / 1024).ToString(format: "#,##0")) KB
 						|
-						@((((double)totalLength) / ((double)(1024 * 1024))).ToString("#,##0")) MBytes
+						@((totalLength / (1024 * 1024)).ToString(format: "#,##0")) MB
 					</th>
 				</tr>
 			</tfoot>

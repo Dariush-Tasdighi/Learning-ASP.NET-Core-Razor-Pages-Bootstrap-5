@@ -1,23 +1,22 @@
-﻿namespace Infrastructure.Messages
+﻿namespace Infrastructure.Messages;
+
+public interface IMessageHandler
 {
-	public interface IMessageHandler
-	{
-		bool AddPageError(string? message);
+	bool AddPageError(string? message);
 
-		bool AddPageWarning(string? message);
+	bool AddPageWarning(string? message);
 
-		bool AddPageSuccess(string? message);
+	bool AddPageSuccess(string? message);
 
 
 
-		bool AddToastError(string? message);
+	bool AddToastError(string? message);
 
-		bool AddToastWarning(string? message);
+	bool AddToastWarning(string? message);
 
-		bool AddToastSuccess(string? message);
+	bool AddToastSuccess(string? message);
 
 
 
-		bool AddMessage(MessageType type, string? message);
-	}
+	bool AddMessage(MessageType type, string? message);
 }

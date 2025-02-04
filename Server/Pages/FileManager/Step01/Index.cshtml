@@ -1,11 +1,14 @@
 ﻿@page
+
+@using System.IO
+
 @model Server.Pages.FileManager.Step01.IndexModel
 
 @{
-	if (Model == null)
-	{
-		return;
-	}
+	// if (Model is null)
+	// {
+	// 	return;
+	// }
 
 	Layout = "Layouts/_LayoutFileManager";
 }
@@ -58,24 +61,24 @@
 						<td>
 							<i class="bi bi-folder"></i>
 
-							<a href="@(Model.PageAddress)?path=@(path)" class="text-decoration-none">
+							<a href="@(Model.RootRelativePageAddress)?path=@(path)" class="text-decoration-none">
 								@(item.Name)
 							</a>
 						</td>
 						<td>
-							@(GetContentCount(item))
+							@(GetContentCount(directoryInfo: item))
 						</td>
 						<td>
 							@(item.Attributes)
 						</td>
 						<td>
-							@(item.CreationTime.ToString(Model.DisplayDateTimeFormat))
+							@(item.CreationTime.ToString(format: Model.DisplayDateTimeFormat))
 						</td>
 						<td>
-							@(item.LastWriteTime.ToString(Model.DisplayDateTimeFormat))
+							@(item.LastWriteTime.ToString(format: Model.DisplayDateTimeFormat))
 						</td>
 						<td>
-							@(item.LastAccessTime.ToString(Model.DisplayDateTimeFormat))
+							@(item.LastAccessTime.ToString(format: Model.DisplayDateTimeFormat))
 						</td>
 					</tr>
 				}
@@ -85,7 +88,7 @@
 </div>
 
 @{
-	string GetContentCount(System.IO.DirectoryInfo directoryInfo)
+	string GetContentCount(DirectoryInfo directoryInfo)
 	{
 		var fileCount = directoryInfo.GetFiles().Count();
 		var directoryCount = directoryInfo.GetDirectories().Count();
@@ -96,7 +99,7 @@
 
 		if (contentCount != 0)
 		{
-			result = contentCount.ToString("#,##0");
+			result = contentCount.ToString(format:"#,##0");
 		}
 
 		return result;
@@ -161,19 +164,19 @@
 								@(item.Extension.ToLower())
 							</td>
 							<td>
-								@(item.Length.ToString("#,##0"))
+								@(item.Length.ToString(format: "#,##0"))
 							</td>
 							<td>
 								@(item.Attributes)
 							</td>
 							<td>
-								@(item.CreationTime.ToString(Model.DisplayDateTimeFormat))
+								@(item.CreationTime.ToString(format: Model.DisplayDateTimeFormat))
 							</td>
 							<td>
-								@(item.LastWriteTime.ToString(Model.DisplayDateTimeFormat))
+								@(item.LastWriteTime.ToString(format: Model.DisplayDateTimeFormat))
 							</td>
 							<td>
-								@(item.LastAccessTime.ToString(Model.DisplayDateTimeFormat))
+								@(item.LastAccessTime.ToString(format: Model.DisplayDateTimeFormat))
 							</td>
 						</tr>
 					}
@@ -182,13 +185,13 @@
 
 			<tfoot class="table-secondary">
 				<tr>
-					<th scope="col" colspan="10">
+					<th scope="col" colspan="8">
 						Total Length:
-						@(totalLength.ToString("#,##0")) Bytes
+						@(totalLength.ToString(format: "#,##0")) Bytes
 						|
-						@((((double)totalLength) / ((double)1024)).ToString("#,##0")) KBytes
+						@((totalLength / 1024).ToString(format: "#,##0")) KB
 						|
-						@((((double)totalLength) / ((double)(1024 * 1024))).ToString("#,##0")) MBytes
+						@((totalLength / (1024 * 1024)).ToString(format: "#,##0")) MB
 					</th>
 				</tr>
 			</tfoot>
