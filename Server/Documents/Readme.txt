@@ -1,4 +1,12 @@
 ﻿**************************************************
+https://www.jsdelivr.com/package/npm/bootstrap
+
+Copy HTML + SRI:
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" integrity="sha256-oxqX0LQclbvrsJt8IymkxnISn4Np2Wy2rY9jjoQlDEg=" crossorigin="anonymous">
+**************************************************
+
+**************************************************
 1)
 
 - In 'Visual Studio':
