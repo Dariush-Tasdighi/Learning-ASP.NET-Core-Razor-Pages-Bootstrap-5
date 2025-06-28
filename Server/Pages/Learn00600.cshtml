@@ -243,11 +243,11 @@
 		</p>
 
 		<div class="fst-italic">
-			Hello, World!
+			Hello, World (1)!
 			<span class="fst-normal">
-				Hello, World! (p) (fst-normal) (means Reset)
+				Hello, World (2)! (p) (fst-normal) (means Reset)
 			</span>
-			Hello, World!
+			Hello, World (3)!
 		</div>
 	</div>
 
@@ -362,6 +362,7 @@
 		</h3>
 
 		<p>
+			(Default)
 			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
@@ -371,6 +372,7 @@
 		</p>
 
 		<p class="lh-1">
+			(lh-1)
 			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
@@ -380,6 +382,7 @@
 		</p>
 
 		<p class="lh-sm">
+			(lh-sm)
 			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
@@ -389,6 +392,7 @@
 		</p>
 
 		<p class="lh-base">
+			(lh-base)
 			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
@@ -398,6 +402,7 @@
 		</p>
 
 		<p class="lh-lg">
+			(lh-lg)
 			Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
 			- Hello, World! - Hello, World! - Hello, World! - Hello, World! - Hello, World!
@@ -410,6 +415,30 @@
 	<hr />
 
 	<div class="container">
+		<h3>
+			&mdash; Text Horizontal Alignment
+		</h3>
+
+		<p>
+			Hello, World! (p) [Default]
+		</p>
+
+		<p class="text-start">
+			Hello, World! (p) [text-left] &raquo; [text-start]
+		</p>
+
+		<p class="text-center">
+			Hello, World! (p) [text-center]
+		</p>
+
+		<p class="text-end">
+			Hello, World! (p) [text-right] &raquo; [text-end]
+		</p>
+	</div>
+
+	<hr />
+
+	<div class="container" dir="rtl">
 		<h3>
 			&mdash; Text Horizontal Alignment
 		</h3>
@@ -477,10 +506,12 @@
 		<div class="bg-info border" style="line-height: 100px;">
 			<span>[Default]</span>
 			<span class="align-baseline">[align-baseline]</span>
-			<span class="align-top">[align-top]</span>
 			<span class="align-middle">[align-middle]</span>
+
 			<span class="align-bottom">[align-bottom]</span>
 			<span class="align-text-top">[align-text-top]</span>
+
+			<span class="align-top">[align-top]</span>
 			<span class="align-text-bottom">[align-text-bottom]</span>
 		</div>
 
@@ -491,10 +522,12 @@
 				<tr>
 					<td class="border">[Default]</td>
 					<td class="border align-baseline">[align-baseline]</td>
-					<td class="border align-top">[align-top]</td>
 					<td class="border align-middle">[align-middle]</td>
+
 					<td class="border align-bottom">[align-bottom]</td>
 					<td class="border align-text-top">[align-text-top]</td>
+
+					<td class="border align-top">[align-top]</td>
 					<td class="border align-text-bottom">[align-text-bottom]</td>
 				</tr>
 			</tbody>
@@ -521,26 +554,6 @@
 				System.Console.WriteLine("Hello, World!");
 			}
 		</code>
-
-		<div class="text-danger">
-			Hello, World! <a href="#">This is Link!</a> Hello, World!
-		</div>
-
-		<div class="text-danger">
-			Hello, World! <a href="#" class="link-danger">This is Link (Reset Text Color)!</a> Hello, World!
-		</div>
-
-		<div class="text-danger">
-			Hello, World! <a href="#" class="text-reset">This is Link (Reset Text Color)!</a> Hello, World!
-		</div>
-
-		<div class="text-danger link-danger">
-			Hello, World! <a href="#">This is Link!</a> Hello, World! کار نمی‌کند
-		</div>
-
-		<div class="text-danger">
-			Hello, World! <span class="text-reset">Text color has been reset!</span> Hello, World! کار نمی‌کند
-		</div>
 	</div>
 
 	<hr />

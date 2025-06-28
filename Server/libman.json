@@ -3,11 +3,11 @@
 	"defaultProvider": "cdnjs",
 	"libraries": [
 		{
-			"library": "bootstrap@5.3.3",
+			"library": "bootstrap@5.3.7",
 			"destination": "wwwroot/lib/bootstrap/"
 		},
 		{
-			"library": "bootstrap-icons@1.11.3",
+			"library": "bootstrap-icons@1.13.1",
 			"destination": "wwwroot/lib/bootstrap-icons/"
 		},
 		{
@@ -23,7 +23,7 @@
 			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
 		},
 		{
-			"library": "tinymce@7.6.1",
+			"library": "tinymce@7.9.1",
 			"destination": "wwwroot/lib/tinymce/"
 		}
 	]
