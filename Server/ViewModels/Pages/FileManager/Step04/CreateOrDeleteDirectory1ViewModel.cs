@@ -1,4 +1,4 @@
-﻿namespace ViewModels.FileManager.Step04
+﻿namespace Server.ViewModels.Pages.FileManager.Step04
 {
 	public class CreateOrDeleteDirectory1ViewModel : object
 	{

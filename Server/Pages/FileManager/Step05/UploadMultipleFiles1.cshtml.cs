@@ -17,7 +17,7 @@ namespace Server.Pages.FileManager.Step05
 		//public System.Collections.Generic.IList<Microsoft.AspNetCore.Http.IFormFile>? UploadedFiles { get; set; }
 
 		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.FileManager.Step05.UploadMultipleFiles1ViewModel ViewModel { get; set; }
+		public ViewModels.Pages.FileManager.Step05.UploadMultipleFiles1ViewModel ViewModel { get; set; }
 
 		public void OnGet()
 		{

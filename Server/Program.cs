@@ -51,7 +51,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 var webApplicationOptions =
-	new Microsoft.AspNetCore.Builder.WebApplicationOptions
+	new WebApplicationOptions
 	{
 		EnvironmentName =
 			System.Diagnostics.Debugger.IsAttached ?
@@ -60,42 +60,19 @@ var webApplicationOptions =
 			Microsoft.Extensions.Hosting.Environments.Production,
 	};
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(options: webApplicationOptions);
+var builder = WebApplication.CreateBuilder(options: webApplicationOptions);
 
-// **************************************************
-// AddHttpContextAccessor() -> using Microsoft.Extensions.DependencyInjection;
 builder.Services.AddHttpContextAccessor();
-// **************************************************
 
-// **************************************************
-// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
 builder.Services.AddRazorPages();
-// **************************************************
 
-// **************************************************
-var app =
-	builder.Build();
-// **************************************************
+var app = builder.Build();
 
-// **************************************************
-// UseHttpsRedirection() -> using Microsoft.AspNetCore.Builder;
 app.UseHttpsRedirection();
-// **************************************************
 
-// **************************************************
-// UseStaticFiles() -> using Microsoft.AspNetCore.Builder;
 app.UseStaticFiles();
-// **************************************************
 
-// **************************************************
-// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
 app.MapRazorPages();
-// **************************************************
 
-// **************************************************
 app.Run();
-// **************************************************
-// **************************************************
 // **************************************************

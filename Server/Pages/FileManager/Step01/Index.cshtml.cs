@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Linq;
 using Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Server.Pages.FileManager.Step01;
 
@@ -17,14 +17,20 @@ public class IndexModel : BasePageModel
 		PhysicalRootPath = $@"{hostEnvironment.ContentRootPath}\wwwroot";
 		//PhysicalRootPath = @$"{hostEnvironment.ContentRootPath}\wwwroot";
 		//PhysicalRootPath = $"{hostEnvironment.ContentRootPath}\\wwwroot";
+
+		CurrentPath = "/"; // TODO ?????
+
+		PhysicalCurrentPath =
+			$"{PhysicalRootPath}{CurrentPath}"
+			.Replace(oldValue: "/", newValue: @"\"); // TODO ?????
 	}
 
 	public string PhysicalRootPath { get; init; }
 	public string DisplayDateTimeFormat { get; init; }
 	public string RootRelativePageAddress { get; init; }
 
-	public string? CurrentPath { get; set; }
-	public string? PhysicalCurrentPath { get; set; }
+	public string CurrentPath { get; set; }
+	public string PhysicalCurrentPath { get; set; }
 
 	public IList<FileInfo> Files { get; set; } = [];
 	public IList<DirectoryInfo> Directories { get; set; } = [];

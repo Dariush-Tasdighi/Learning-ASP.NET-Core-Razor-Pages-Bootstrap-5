@@ -1,4 +1,4 @@
-﻿namespace ViewModels.FileManager.Step03
+﻿namespace Server.ViewModels.Pages.FileManager.Step03
 {
 	public class CreateDirectory7ViewModel : object
 	{

@@ -1,4 +1,4 @@
-﻿namespace ViewModels.Security
+﻿namespace Server.ViewModels.Pages.Security
 {
 	public class Login2ViewModel : object
 	{

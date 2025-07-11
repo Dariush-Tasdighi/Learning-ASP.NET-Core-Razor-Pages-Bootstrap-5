@@ -1,4 +1,4 @@
-﻿namespace ViewModels.FileManager.Step05
+﻿namespace Server.ViewModels.Pages.FileManager.Step05
 {
 	public class UploadMultipleFiles1ViewModel : object
 	{

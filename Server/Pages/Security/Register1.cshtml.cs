@@ -8,7 +8,7 @@ namespace Server.Pages.Security
 		}
 
 		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.Security.Register1ViewModel ViewModel { get; set; }
+		public ViewModels.Pages.Security.Register1ViewModel ViewModel { get; set; }
 
 		public void OnGet()
 		{

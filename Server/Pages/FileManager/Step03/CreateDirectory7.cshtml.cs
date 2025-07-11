@@ -8,7 +8,7 @@ namespace Server.Pages.FileManager.Step03
 		}
 
 		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.FileManager.Step03.CreateDirectory7ViewModel ViewModel { get; set; }
+		public ViewModels.Pages.FileManager.Step03.CreateDirectory7ViewModel ViewModel { get; set; }
 
 		public void OnGet()
 		{

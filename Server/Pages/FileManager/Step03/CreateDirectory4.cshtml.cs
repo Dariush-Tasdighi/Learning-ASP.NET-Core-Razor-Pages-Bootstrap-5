@@ -1,28 +1,31 @@
-namespace Server.Pages.FileManager.Step03
+using Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+using Server.ViewModels.Pages.FileManager.Step03;
+
+namespace Server.Pages.FileManager.Step03;
+
+public class CreateDirectoryModel4 : BasePageModel
 {
-	public class CreateDirectoryModel4 : Infrastructure.BasePageModel
+	public CreateDirectoryModel4() : base()
 	{
-		public CreateDirectoryModel4() : base()
+		ViewModel = new();
+	}
+
+	[BindProperty]
+	public CreateDirectory4ViewModel ViewModel { get; set; }
+
+	public void OnGet()
+	{
+		ViewModel.DirectoryName = null;
+	}
+
+	public void OnPost()
+	{
+		if (string.IsNullOrWhiteSpace(value: ViewModel.DirectoryName))
 		{
-			ViewModel = new();
+			// Error!
 		}
 
-		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.FileManager.Step03.CreateDirectory4ViewModel ViewModel { get; set; }
-
-		public void OnGet()
-		{
-			ViewModel.DirectoryName = null;
-		}
-
-		public void OnPost()
-		{
-			if (string.IsNullOrWhiteSpace(ViewModel.DirectoryName))
-			{
-				// Error!
-			}
-
-			// Do Something...
-		}
+		// Do Something...
 	}
 }
