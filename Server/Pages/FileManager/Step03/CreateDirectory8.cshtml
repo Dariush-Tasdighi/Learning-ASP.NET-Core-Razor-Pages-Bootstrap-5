@@ -2,10 +2,8 @@
 @model Server.Pages.FileManager.Step03.CreateDirectoryModel8
 
 @{
-	ViewData["PageTitle"] =
-		"Create Directory (8)";
-
 	Layout = "Layouts/_LayoutFileManager";
+	ViewData["PageTitle"] = "Create Directory (8)";
 }
 
 <form method="post">
@@ -35,22 +33,24 @@
 
 @section Scripts
 {
-<script>
+	<script>
 
-	$(function() {
+		$(function() {
 
-		$('form').submit(function (e) {
+			$('form').submit(function(e) {
 
-			if ($(this).valid()) {
+				if ($(this).valid()) {
 
-				$('button').prop('disabled', true)
-				$('input[type=button]').prop('disabled', true)
+					$('button').prop('disabled', true)
+					$('input[type=reset]').prop('disabled', true)
+					$('input[type=submit]').prop('disabled', true)
+					$('input[type=button]').prop('disabled', true)
 
-			}
+				}
+
+			})
 
 		})
 
-	})
-
-</script>
+	</script>
 }

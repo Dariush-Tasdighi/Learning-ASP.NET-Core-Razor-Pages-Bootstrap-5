@@ -1,19 +1,14 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Infrastructure.Messages;
 
-public static class Utility
+public static class MessagesUtility : object
 {
-	static Utility()
-	{
-	}
-
 	public static bool AddMessage
-		(Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary tempData,
-		MessageType type, string? message)
+		(ITempDataDictionary tempData, MessageType type, string? message)
 	{
-		message =
-			Infrastructure.Utility.FixText(text: message);
+		message = Utility.FixText(text: message);
 
 		if (message == null)
 		{
@@ -24,25 +19,21 @@ public static class Utility
 		// به دلایل خیلی زیادی، کد ذیل به صورتی که ملاحظه می‌کنید
 		// نوشته شده است، لذا در آن هیچ‌گونه تغییری اعمال نکنید
 		// **************************************************
-		System.Collections.Generic.List<string>? list;
+		List<string>? list;
 
-		var tempDataItems =
-			(tempData[key: type.ToString()] as
-			System.Collections.Generic.IList<string>);
+		var tempDataItems = tempData[key: type.ToString()] as IList<string>;
 
-		if (tempDataItems == null)
+		if (tempDataItems is null)
 		{
-			list = new System.Collections.Generic.List<string>();
+			list = [];
 		}
 		else
 		{
-			list =
-				tempDataItems as
-				System.Collections.Generic.List<string>;
+			list = tempDataItems as List<string>;
 
-			if (list == null)
+			if (list is null)
 			{
-				list = tempDataItems.ToList();
+				list = [];
 			}
 		}
 

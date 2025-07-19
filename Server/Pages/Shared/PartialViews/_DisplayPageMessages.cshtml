@@ -1,17 +1,11 @@
-﻿@{
+﻿@using Infrastructure.Messages
+
+@{
 	// نکته مهم
 	// در همه شرایط کار نمی‌کند List استفاده از کلاس
-	var pageErrors =
-		TempData[key: Infrastructure.Messages.MessageType.PageError.ToString()] as
-		System.Collections.Generic.IList<string>;
-
-	var pageWarnings =
-		TempData[key: Infrastructure.Messages.MessageType.PageWarning.ToString()] as
-		System.Collections.Generic.IList<string>;
-
-	var pageSuccesses =
-		TempData[key: Infrastructure.Messages.MessageType.PageSuccess.ToString()] as
-		System.Collections.Generic.IList<string>;
+	var pageErrors = TempData[key: MessageType.PageError.ToString()] as IList<string>;
+	var pageWarnings = TempData[key: MessageType.PageWarning.ToString()] as IList<string>;
+	var pageSuccesses = TempData[key: MessageType.PageSuccess.ToString()] as IList<string>;
 
 	if (pageErrors != null && pageErrors.Count != 0)
 	{

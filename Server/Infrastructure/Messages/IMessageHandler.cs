@@ -8,15 +8,9 @@ public interface IMessageHandler
 
 	bool AddPageSuccess(string? message);
 
-
-
 	bool AddToastError(string? message);
 
 	bool AddToastWarning(string? message);
 
 	bool AddToastSuccess(string? message);
-
-
-
-	bool AddMessage(MessageType type, string? message);
 }

@@ -2,10 +2,8 @@
 @model Server.Pages.FileManager.Step03.CreateDirectoryModel6
 
 @{
-	ViewData["PageTitle"] =
-		"Create Directory (6)";
-
 	Layout = "Layouts/_LayoutFileManager";
+	ViewData["PageTitle"] = "Create Directory (6)";
 }
 
 <form method="post">
@@ -21,7 +19,7 @@
 			@{
 				var errorMessage = ViewData["ErrorMessage"]?.ToString();
 
-				if (string.IsNullOrWhiteSpace(errorMessage) == false)
+				if (string.IsNullOrWhiteSpace(value: errorMessage) == false)
 				{
 					<div class="alert alert-danger" role="alert">
 						@(errorMessage)
@@ -32,7 +30,7 @@
 			@{
 				var successMessage = ViewData["SuccessMessage"]?.ToString();
 
-				if (string.IsNullOrWhiteSpace(successMessage) == false)
+				if (string.IsNullOrWhiteSpace(value: successMessage) == false)
 				{
 					<div class="alert alert-success" role="alert">
 						@(successMessage)

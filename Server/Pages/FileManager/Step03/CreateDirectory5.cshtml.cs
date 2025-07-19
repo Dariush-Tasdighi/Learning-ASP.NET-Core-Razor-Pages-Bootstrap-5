@@ -13,6 +13,7 @@ public class CreateDirectoryModel5 : BasePageModel
 
 	[BindProperty]
 	public CreateDirectory5ViewModel ViewModel { get; set; }
+	//public CreateDirectory5ViewModel ViewModel { get; set; } = new();
 
 	public void OnGet()
 	{
