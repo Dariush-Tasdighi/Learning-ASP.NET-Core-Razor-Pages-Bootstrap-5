@@ -1,4 +1,4 @@
-using Infrastructure;
+﻿using Infrastructure;
 
 namespace Server.Pages.FileManager.Step03;
 
@@ -21,4 +21,11 @@ public class CreateDirectoryModel1 : BasePageModel
 	public void OnPost(string directoryName)
 	{
 	}
+
+	/// <summary>
+	/// دستور ذیل، غلط می‌باشد
+	/// </summary>
+	//public void OnPost(string something)
+	//{
+	//}
 }

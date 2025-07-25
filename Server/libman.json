@@ -23,7 +23,7 @@
 			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
 		},
 		{
-			"library": "tinymce@7.9.1",
+			"library": "tinymce@8.0.0",
 			"destination": "wwwroot/lib/tinymce/"
 		}
 	]
