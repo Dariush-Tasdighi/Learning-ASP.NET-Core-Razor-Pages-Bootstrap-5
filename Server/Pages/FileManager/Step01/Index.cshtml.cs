@@ -66,16 +66,16 @@ public class IndexModel : BasePageModel
 	{
 		var fixedPath = "/";
 
-		if (!string.IsNullOrWhiteSpace(value: path))
+		if (string.IsNullOrWhiteSpace(value: path) == false)
 		{
 			fixedPath = path.Replace(oldValue: @"\", newValue: "/");
 
-			if (!fixedPath.StartsWith(value: "/"))
+			if (fixedPath.StartsWith(value: "/") == false)
 			{
 				fixedPath = $"/{fixedPath}";
 			}
 
-			if (!fixedPath.EndsWith(value: "/"))
+			if (fixedPath.EndsWith(value: "/") == false)
 			{
 				fixedPath = $"{fixedPath}/";
 			}

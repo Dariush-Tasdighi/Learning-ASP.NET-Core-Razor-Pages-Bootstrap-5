@@ -2,9 +2,7 @@
 @model Server.Pages.FileManager.Step05.UploadFile1
 
 @{
-	Layout =
-		"Layouts/_LayoutFileManager";
-
+	Layout = "Layouts/_LayoutFileManager";
 	ViewData["PageTitle"] = "Upload File (1)";
 }
 
@@ -39,22 +37,24 @@
 
 @section Scripts
 {
-<script>
+	<script>
 
-	$(function() {
+		$(function() {
 
-		$('form').submit(function (e) {
+			$('form').submit(function (e) {
 
-			if ($(this).valid()) {
+				if ($(this).valid()) {
 
-				$('button').prop('disabled', true)
-				$('input[type=button]').prop('disabled', true)
+					$('button').prop('disabled', true)
+					$('input[type=reset]').prop('disabled', true)
+					$('input[type=submit]').prop('disabled', true)
+					$('input[type=button]').prop('disabled', true)
 
-			}
+				}
+
+			})
 
 		})
 
-	})
-
-</script>
+	</script>
 }

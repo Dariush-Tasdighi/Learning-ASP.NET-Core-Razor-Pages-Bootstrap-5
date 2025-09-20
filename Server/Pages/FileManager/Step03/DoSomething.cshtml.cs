@@ -1,39 +1,40 @@
-﻿namespace Server.Pages.FileManager.Step03
+﻿using Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+
+namespace Server.Pages.FileManager.Step03;
+
+public class DoSomethingModel : BasePageModel
 {
-	public class DoSomethingModel : Infrastructure.BasePageModel
+	public DoSomethingModel() : base()
 	{
-		public DoSomethingModel() : base()
-		{
-		}
+	}
 
-		public Microsoft.AspNetCore.Mvc.IActionResult OnGet()
-		{
-			// **************************************************
-			var errorMessages =
-				new System.Collections.Generic.List<string>();
+	public IActionResult OnGet()
+	{
+		// **************************************************
+		var errorMessages = new List<string>();
 
-			errorMessages.Add(item: "Error Message");
+		errorMessages.Add(item: "Error Message");
 
-			// کار نمی‌کند Redirect در زمان
-			ViewData["ErrorMessages"] = errorMessages;
-			// **************************************************
+		// کار نمی‌کند Redirect در زمان
+		ViewData["ErrorMessages"] = errorMessages;
+		// **************************************************
 
-			// **************************************************
-			//var errorMessages =
-			//	new System.Collections.Generic.List<string>();
+		// **************************************************
+		//var errorMessages = new List<string>();
 
-			//errorMessages.Add(item: "Error Message");
+		//errorMessages.Add(item: "Error Message");
 
-			//TempData["ErrorMessages"] = errorMessages;
-			// **************************************************
+		//TempData["ErrorMessages"] = errorMessages;
+		// **************************************************
 
-			// **************************************************
-			//AddErrorMessage(message: "Error Message");
-			//AddWarningMessage(message: "Warning Message");
-			//AddSuccessMessage(message: "Success Message");
-			// **************************************************
+		// **************************************************
+		//AddErrorMessage(message: "Error Message");
+		//AddWarningMessage(message: "Warning Message");
+		//AddSuccessMessage(message: "Success Message");
+		// **************************************************
 
-			return RedirectToPage(pageName: "CreateDirectory7");
-		}
+		return RedirectToPage(pageName: "CreateDirectory7");
 	}
 }

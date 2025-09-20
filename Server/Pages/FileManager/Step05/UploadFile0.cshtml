@@ -2,12 +2,12 @@
 @model Server.Pages.FileManager.Step05.UploadFile0
 
 @{
-	Layout =
-		"Layouts/_LayoutFileManager";
-
 	ViewData["PageTitle"] = "Upload File (0)";
+	Layout = "Layouts/_LayoutFileManager";
+
 }
 
+@* Step (2) *@
 <form method="post" enctype="multipart/form-data">
 
 	<div class="row">
@@ -20,6 +20,7 @@
 
 			<div class="mb-3">
 				<label for="file" class="form-label">Select File</label>
+				@* Step (1) *@
 				<input type="file" id="file" name="file" class="form-control" aria-label="Select File" />
 			</div>
 
@@ -32,22 +33,24 @@
 
 @section Scripts
 {
-<script>
+	<script>
 
-	$(function() {
+		$(function() {
 
-		$('form').submit(function (e) {
+			$('form').submit(function (e) {
 
-			if ($(this).valid()) {
+				if ($(this).valid()) {
 
-				$('button').prop('disabled', true)
-				$('input[type=button]').prop('disabled', true)
+					$('button').prop('disabled', true)
+					$('input[type=reset]').prop('disabled', true)
+					$('input[type=submit]').prop('disabled', true)
+					$('input[type=button]').prop('disabled', true)
 
-			}
+				}
+
+			})
 
 		})
 
-	})
-
-</script>
+	</script>
 }

@@ -1,43 +1,46 @@
-namespace Server.Pages.FileManager.Step04
+using Infrastructure;
+using System.Threading;
+using Microsoft.AspNetCore.Mvc;
+using Server.ViewModels.Pages.FileManager.Step04;
+
+namespace Server.Pages.FileManager.Step04;
+
+//[ValidateAntiForgeryToken]
+public class CreateOrDeleteDirectory1 : BasePageModel
 {
-	public class CreateOrDeleteDirectory1 : Infrastructure.BasePageModel
+	public CreateOrDeleteDirectory1() : base()
 	{
-		public CreateOrDeleteDirectory1() : base()
+		ViewModel = new();
+	}
+
+	[BindProperty]
+	public CreateOrDeleteDirectory1ViewModel ViewModel { get; set; }
+
+	public void OnGet()
+	{
+	}
+
+	public void OnPost()
+	{
+		Thread.Sleep(millisecondsTimeout: 5000);
+
+		if (ModelState.IsValid == false)
 		{
-			ViewModel = new();
+			return;
 		}
 
-		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public ViewModels.Pages.FileManager.Step04.CreateOrDeleteDirectory1ViewModel ViewModel { get; set; }
+		AddToastSuccess(message: "The directory has been created successfully.");
+	}
 
-		public void OnGet()
+	public void OnPostDelete()
+	{
+		Thread.Sleep(millisecondsTimeout: 5000);
+
+		if (ModelState.IsValid == false)
 		{
+			return;
 		}
 
-		public void OnPost()
-		{
-			System.Threading.Thread.Sleep(millisecondsTimeout: 2000);
-
-			if (ModelState.IsValid == false)
-			{
-				return;
-			}
-
-			AddToastSuccess
-				(message: "The directory has been created successfully.");
-		}
-
-		public void OnPostDelete()
-		{
-			System.Threading.Thread.Sleep(millisecondsTimeout: 2000);
-
-			if (ModelState.IsValid == false)
-			{
-				return;
-			}
-
-			AddToastSuccess
-				(message: "The directory has been deleted successfully.");
-		}
+		AddToastSuccess(message: "The directory has been deleted successfully.");
 	}
 }

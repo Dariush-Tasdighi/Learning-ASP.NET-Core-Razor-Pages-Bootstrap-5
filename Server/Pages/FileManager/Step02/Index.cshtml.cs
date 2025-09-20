@@ -97,4 +97,21 @@ public class IndexModel : BasePageModel
 			[.. directoryInfo.GetDirectories()
 			.OrderBy(current => current.Name)];
 	}
+
+	public string GetContentCount(DirectoryInfo directoryInfo)
+	{
+		var fileCount = directoryInfo.GetFiles().Length;
+		var directoryCount = directoryInfo.GetDirectories().Length;
+
+		var contentCount = fileCount + directoryCount;
+
+		var result = "[EMPTY]";
+
+		if (contentCount != 0)
+		{
+			result = contentCount.ToString(format: "#,##0");
+		}
+
+		return result;
+	}
 }

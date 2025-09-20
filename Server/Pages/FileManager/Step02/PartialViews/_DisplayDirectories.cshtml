@@ -88,7 +88,7 @@
 							</a>
 						</td>
 						<td>
-							@(GetContentCount(directoryInfo: item))
+							@(Model.GetContentCount(directoryInfo: item))
 						</td>
 						<td>
 							@(item.Attributes)
@@ -108,22 +108,3 @@
 		</table>
 	</div>
 </div>
-
-@{
-	string GetContentCount(System.IO.DirectoryInfo directoryInfo)
-	{
-		var fileCount = directoryInfo.GetFiles().Count();
-		var directoryCount = directoryInfo.GetDirectories().Count();
-
-		var contentCount = fileCount + directoryCount;
-
-		var result = "[EMPTY]";
-
-		if (contentCount != 0)
-		{
-			result = contentCount.ToString("#,##0");
-		}
-
-		return result;
-	}
-}

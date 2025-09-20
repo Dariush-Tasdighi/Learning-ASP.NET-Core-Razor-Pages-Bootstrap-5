@@ -2,13 +2,12 @@
 @model Server.Pages.FileManager.Step04.CreateOrDeleteDirectory1
 
 @{
-	ViewData["PageTitle"] =
-		"Create or Delete Directory (1)";
-
 	Layout = "Layouts/_LayoutFileManager";
+	ViewData["PageTitle"] = "Create or Delete Directory (1)";
 }
 
 <form method="post">
+	@*@Html.AntiForgeryToken()*@
 
 	<div class="row">
 		<div class="col-12 p-3 col-md-8 offset-md-2 p-md-5 bg-light border border-2 rounded-3 shadow-lg">
@@ -34,22 +33,24 @@
 
 @section Scripts
 {
-<script>
+	<script>
 
-	$(function() {
+		$(function() {
 
-		$('form').submit(function (e) {
+			$('form').submit(function (e) {
 
-			if ($(this).valid()) {
+				if ($(this).valid()) {
 
-				$('button').prop('disabled', true)
-				$('input[type=button]').prop('disabled', true)
+					$('button').prop('disabled', true)
+					$('input[type=reset]').prop('disabled', true)
+					$('input[type=submit]').prop('disabled', true)
+					$('input[type=button]').prop('disabled', true)
 
-			}
+				}
+
+			})
 
 		})
 
-	})
-
-</script>
+	</script>
 }
